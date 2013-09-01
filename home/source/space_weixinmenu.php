@@ -173,8 +173,22 @@ $query2 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenutop')." where
 $value2 = $_SGLOBAL['db']->fetch_array($query2);
 $query3 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenutop')." where uid='$_SGLOBAL[supe_uid]' and type='frist'");
 $value3 = $_SGLOBAL['db']->fetch_array($query3);
+if($value3){
+$wei3=explode(".",$value3['number']);
+$wei3id=$wei3['0']."id";
+$newquery3=$_SGLOBAL['db']->query("SELECT * FROM ".tname("$wei3[0]")." where uid='$_SGLOBAL[supe_uid]'and $wei3id='$wei3[1]'");
+$newvalue3 = $_SGLOBAL['db']->fetch_array($newquery3);
+$newvalue3['subject']=getstr($newvalue3['subject'], 25, 0, 0, 0, 0, -1)."...";
+}
 $query4 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenutop')." where uid='$_SGLOBAL[supe_uid]' and type='second'");
 $value4 = $_SGLOBAL['db']->fetch_array($query4);
+if($value4){
+$wei4=explode(".",$value4['number']);
+$wei4id=$wei4['0']."id";
+$newquery4=$_SGLOBAL['db']->query("SELECT * FROM ".tname("$wei4[0]")." where uid='$_SGLOBAL[supe_uid]'and $wei4id='$wei4[1]'");
+$newvalue4 = $_SGLOBAL['db']->fetch_array($newquery4);
+$newvalue4['subject']=getstr($newvalue4['subject'], 25, 0, 0, 0, 0, -1)."...";
+}
 $count='1';
 	for($i='0';$i<'6';$i++){
 		$name="sub_button".$i;
