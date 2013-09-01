@@ -19,6 +19,7 @@
           <script type="text/javascript">
           $(document).ready(function(){
             $('#weixin').attr("style", "display:none;");
+            
             $('#weixinhome').click(function (e) {
                 $("#what").html("<input type='hidden' name='type' value='frist' id='type'>");
                 e.preventDefault();
@@ -420,7 +421,14 @@ $(document).ready(function() {
 
         })
     </script>
-     <!--{else}-->  
+     <!--{else}-->
+     <script type="text/javascript">
+     $(document).ready(function(){
+      $('#tip').attr("style", "display:block;");
+     $('#tip').modal();
+     preventDefault();
+   })
+     </script>
                           <div class="content_detail_wrapper">
                    <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}" enctype="multipart/form-data">
                      <div class="left_weixin">
@@ -458,7 +466,7 @@ $(document).ready(function() {
                           </div>
                             <div class="erji_box_wrap">
                            <ul style="" class="erji_box" tag="2">
-                                <li><!--{if $list[1][sub_button5]}--><input type="text" class="erji_input" name="2sub_button5" value="$list[1][sub_button5]" placeholder="请填写"/><div id="2weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><!--{else}--><!--{if $count1=='5'}--><img src='./template/default/image/erji_add.png' class='add2'><!--{/if}--><!--{/if}--> </li>
+                                <li><!--{if $list[1][sub_button5]}--><input type="text" class="erji_input" name="2sub_button5" value="$list[1][sub_button5]" placeholder="请填写"/><div id="2weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img src="./template/default/image/edit.png"></div><!--{else}--><!--{if $count1=='5'}--><img src='./template/default/image/erji_add.png' class='add2'><!--{/if}--><!--{/if}--> </li>
                                  <li><!--{if $list[1][sub_button4]}--><input type="text" class="erji_input" name="2sub_button4" value="$list[1][sub_button4]"  placeholder="请填写"/><div id="2weixinhome4" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><!--{else}--><!--{if $count1=='4'}--><img src='./template/default/image/erji_add.png' class='add2'><!--{/if}--><!--{/if}--></li>
                                 <li><!--{if $list[1][sub_button3]}--><input type="text" class="erji_input" name="2sub_button3" value="$list[1][sub_button3]"  placeholder="请填写"/><div id="2weixinhome3" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><!--{else}--><!--{if $count1=='3'}--><img src='./template/default/image/erji_add.png' class='add2'><!--{/if}--><!--{/if}--></li>
                                 <li><!--{if $list[1][sub_button2]}--><input type="text" class="erji_input" name="2sub_button2" value="$list[1][sub_button2]"  placeholder="请填写"/><div id="2weixinhome2" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><!--{else}--><!--{if $count1=='2'}--><img src='./template/default/image/erji_add.png' class='add2'><!--{/if}--><!--{/if}--></li>
@@ -657,6 +665,15 @@ $(document).ready(function() {
             <input type="hidden" name="functionweixin" value="1">
             <div id="what"></div>
             </form>
+            </div>
+            <div id="tip">
+
+            <br/>
+           <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">  
+         请选择相应自定义菜单的相应功能。
+         </h3>
+         <br/>
+  
             </div>
 
 
