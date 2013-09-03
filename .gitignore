@@ -1,2 +1,4 @@
 .project
-/home/upload
+home/config.php
+home/upload/
+home/data/
