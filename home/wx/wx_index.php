@@ -33,6 +33,8 @@ class wechatCallbackapiTest
 
     public function responseMsg()
     {
+
+      
           //get post data, May be due to the different environments
           $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
           $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
@@ -45,7 +47,7 @@ class wechatCallbackapiTest
           $user = "zhongwei";
           $pass = "623610577";
           
-
+          
           //如果是新关注用户
           if($postObj->Event == 'subscribe'){
           //send_back(MENU);
@@ -81,18 +83,24 @@ class wechatCallbackapiTest
                       $count=$app_output->data->count;
                       $zhong2 = mysql_query("SELECT * FROM uchome_weixinmenutop  WHERE uid='$row[uid]' and type='image'");
                       $wei2 = mysql_fetch_array($zhong2);
+                      if($wei2){
                       $name=$wei2[name];
+                      if($wei2['recommendlink']){
+                      $url = "$wei2[recommendlink]"; 
+                      }else{
                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                    }
                       $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                       $articles[] = makeArticleItem($name, $name, $pic, $url);
                       $result1 = mysql_query("SELECT * FROM uchome_weixinmenutop  WHERE uid='$row[uid]' and type='frist' ");
-                              mysql_query("SET NAMES 'utf8'");
+                      $result2 = mysql_query("SELECT * FROM uchome_weixinmenutop  WHERE uid='$row[uid]' and type='second' ");
+                      mysql_query("SET NAMES 'utf8'");
                             if($weixin = mysql_fetch_array($result1)){
                               $wei=explode(".",$weixin['number']);
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=$wei[0]&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
                                if($wei[0]=="introduce"){
                               $subject=$app_output->data->introduce->subject;
                               $pic = "http://v5.home3d.cn/home/".$app_output->data->introduce->image1url;
@@ -120,14 +128,13 @@ class wechatCallbackapiTest
                             }
                               $articles[] = makeArticleItem($subject, $subject, $pic, $url); 
                             }
-                          $result2 = mysql_query("SELECT * FROM uchome_weixinmenutop  WHERE uid='$row[uid]' and type='second' ");
-                              mysql_query("SET NAMES 'utf8'");
+                          
                             if($weixin = mysql_fetch_array($result2)){
                               $wei=explode(".",$weixin['number']);
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=$wei[0]&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&wxkey=".$fromUsername."&id=".$wei[1]."&uid=$row[uid]&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
                                if($wei[0]=="introduce"){
                               $subject=$app_output->data->introduce->subject;
                               $pic = "http://v5.home3d.cn/home/".$app_output->data->introduce->image1url;
@@ -156,6 +163,45 @@ class wechatCallbackapiTest
                               $articles[] = makeArticleItem($subject, $subject, $pic, $url); 
                               
                              }
+                           }else{
+                            $appurl = "http://v5.home3d.cn/home/capi/space.php?do=app&uid=$row[uid]";
+                            $app = file_get_contents($appurl,0,null,null);
+                            $app_output = json_decode($app);
+                            $count=$app_output->data->count;
+                            $zhong2 = mysql_query("SELECT * FROM uchome_recommend  WHERE uid='$row[uid]'");
+                            $wei2 = mysql_fetch_array($zhong2);
+                            $name=$wei2[subject];
+                            if($wei2['recommendlink']){
+                            $url = "$wei2[recommendlink]"; 
+                            }else{
+                            $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                            }
+                            $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
+                            $articles[] = makeArticleItem($name, $name, $pic, $url);
+                            for($i=0;$i<$count;$i++){
+                             $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english;
+                             if($app_output->data->app[$i]->newname){
+                             $subject=$app_output->data->app[$i]->newname;
+                             }else{
+                             $subject=$app_output->data->app[$i]->subject;
+                             }
+                               $pic = "http://v5.home3d.cn/home/".$app_output->data->app[$i]->image1url;
+
+                               $articles[] = makeArticleItem($subject, $subject, $pic, $url); 
+                              }  
+                       
+                              if($app_output->data->highapp){
+                                $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->highapp[0]->english;
+                                if($app_output->data->highapp[0]->newname){
+                                 $subject=$app_output->data->highapp[0]->newname;
+                                 }else{
+                                 $subject=$app_output->data->highapp[0]->subject;
+                               }
+                                $pic = "http://v5.home3d.cn/home/".$app_output->data->highapp[0]->image1url;
+
+                                $articles[] = makeArticleItem($subject, $subject, $pic, $url); 
+                              }
+                           }
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
                          }else{
@@ -202,7 +248,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=$wei[0]&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&wxkey=".$fromUsername."&idtype=".$wei[0]."id&type=".$wei[0]."&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->introduce->subject;
                               $message1=$app_output->data->introduce->message1;
                               //$message1=strtolower($message1);
@@ -212,7 +258,12 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                             //$pic = $matches[1][0];
+                              if($app_output->data->introduce->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->introduce->pic;
+                            }else{
+                              $pic="";
+                            }
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -221,7 +272,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=branch&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=branchid&type=branch&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=branchid&type=branch&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->branch->subject;
                               $message1=$app_output->data->branch->message1;
                               preg_match_all("<img src=\"(.*)\">",$message1,$matches);
@@ -230,13 +281,18 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                              //$pic = $matches[1][0];
+                               if($app_output->data->branch->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->branch->pic;
+                            }else{
+                              $pic="";
+                            }
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
                               } elseif($wei[0]=="industry"){
 
-                              $url1 = "http://v5.home3d.cn/home/capi/space.php?do=industry&uid=$row[uid]&id=$wei[1]";
+                              $url1 = "http://v5.home3d.cn/home/capi/space.php?do=industry&wxkey=".$fromUsername."&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
                               $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=industryid&type=industry&moblieclicknum=$row[moblieclicknum]";
@@ -249,7 +305,12 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                              //$pic = $matches[1][0];
+                               if($app_output->data->industry->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->industry->pic;
+                            }else{
+                              $pic="";
+                            }
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -258,7 +319,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=job&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=jobid&type=job&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=jobid&type=job&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->job->subject;
                               $message1=$app_output->data->industry->message1;
                               $message1=strtolower($message1);
@@ -275,16 +336,17 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=product&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=productid&type=product&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=productid&type=product&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->product->subject;
                               $message1=$app_output->data->product->message1;
-                             preg_match_all("<IMG src=\"(.*)\">",$message1,$matches);
+                             preg_match_all("<src=\"(.*)\">",$message1,$matches);
                                $message2=strip_tags($message1);
                               $message2 = str_replace("&nbsp;","",$message2);
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
                               $pic = $matches[1][0];
+                             
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -293,7 +355,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=development&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=developmentid&type=development&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=developmentid&type=development&moblieclicknum=$row[moblieclicknum]";
                               $message1=$app_output->data->development->message1;
                               preg_match_all("<img src=\"(.*)\">",$message1,$matches);
                               $message2=strip_tags($message1);
@@ -301,7 +363,12 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                              //$pic = $matches[1][0];
+                               if($app_output->data->development->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->development->pic;
+                            }else{
+                              $pic="";
+                            }
                                $subject=$app_output->data->development->subject;
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
@@ -311,7 +378,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=goods&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=goodsid&type=goods&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=goodsid&type=goods&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->goods->subject;
                               $message1=$app_output->data->goods->message1;
                               preg_match_all("<img src=\"(.*)\">",$message1,$matches);
@@ -320,7 +387,12 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                              //$pic = $matches[1][0];
+                               if($app_output->data->goods->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->goods->pic;
+                            }else{
+                              $pic="";
+                            }
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -329,7 +401,7 @@ class wechatCallbackapiTest
                               $url1 = "http://v5.home3d.cn/home/capi/space.php?do=cases&uid=$row[uid]&id=$wei[1]";
                               $app = file_get_contents($url1,0,null,null);
                               $app_output = json_decode($app);
-                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&uid=$row[uid]&idtype=casesid&type=cases&moblieclicknum=$row[moblieclicknum]";
+                              $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=".$wei[1]."&wxkey=".$fromUsername."&uid=$row[uid]&idtype=casesid&type=cases&moblieclicknum=$row[moblieclicknum]";
                               $subject=$app_output->data->cases->subject;
                               $message1=$app_output->data->cases->message1;
                               preg_match_all("<img src=\"(.*)\">",$message1,$matches);
@@ -339,6 +411,7 @@ class wechatCallbackapiTest
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
                               $pic = $matches[1][0];
+                              
                               $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -412,7 +485,11 @@ class wechatCallbackapiTest
                        $zhong2 = mysql_query("SELECT * FROM uchome_recommend  WHERE uid='$row[uid]'");
                   $wei2 = mysql_fetch_array($zhong2);
                   $name=$wei2[subject];
-                    $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                    if($wei2['recommendlink']){
+                      $url = "$wei2[recommendlink]"; 
+                      }else{
+                      $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                    }
                     $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                     $articles[] = makeArticleItem($name, $name, $pic, $url);
                       for($i=0;$i<$count;$i++){

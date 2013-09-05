@@ -307,6 +307,10 @@ if(""+idtype+""=="talk"){
 if(""+idtype+""=="goods"){
           data=data.data.goods;
 }
+if(""+idtype+"" == "dialog"){
+        data = data.data.list;
+        
+}
           
           //oid1=data.quiz.options[0].oid;
          // oid2=data.quiz.options[1].oid;
@@ -325,6 +329,7 @@ if(""+idtype+""=="goods"){
 
 					$("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
 
+          console.log(data);
      
      
 			  }else{

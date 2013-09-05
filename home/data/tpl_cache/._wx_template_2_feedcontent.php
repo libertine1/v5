@@ -1,15 +1,19 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/2/feedcontent', '1377794867', './wx/template/2/feedcontent');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/2/feedcontent', '1378364412', './wx/template/2/feedcontent');?><!DOCTYPE html>
 <html>
 <head>
 <title><?=$appsubject['subject']?></title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
 <link rel="stylesheet" type="text/css" href="template/2/css/info_content.css" />
+        <link rel="stylesheet" href="./template/css/base.css" />
+        <link rel="stylesheet" href="./template/css/expressInfo.css" />
 <script type="text/javascript" src="template/2/js/myAll.js"></script>
-      <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-     <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
-     <script type="text/javascript" src="template/js/detail.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="template/js/detail.js"></script>
+        <style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background:url(./template/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+        </style>
       <script id="detailTemplate" type="text/x-jquery-tmpl">
  <header data-role="header" data-tap-toggle="false" data-theme="none">
 <div class="title"><?=BLOCK_TAG_START?>if industry<?=BLOCK_TAG_END?>
@@ -76,6 +80,12 @@
 </head>
 
 <body>
+        <div id="bg" onclick="hideDiv();">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+        <div id="bg2" onclick="hideFriendDIv();">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div> 
 <div data-role="page">
 <div id="detail-panel">
 
@@ -86,7 +96,29 @@
            
                               <?=$message?>
              </div>
+            
                 </div><!-- content_text -->
+                 <div id="friend" class="friend_wrapper">
+             <a id="" class="friend_btn" style="" onclick="showDIv()">
+                       <img src="./template/img/repost_icon.png" alt="">
+                       <span>发送给朋友</span>
+             </a>
+             <a id="" class="friend_btn" style="margin-left:20px;" onclick="showFriendDIv()">
+                       <img src="./template/img/friend_circle.png" alt="">
+                       <span>分享到朋友圈</span>
+             </a>
+             <h3 style="font-size:14px;margin-bottom:-10px;">安卓用户请点击：</h3>
+             <a id="" class="add_btn" href="weixin://addfriend/<?=$uidwxkey['wxkey']?>">
+                 <span>关注</span>
+             </a>
+             <h3 style="font-size:14px;margin-bottom:-10px;">iOS用户请订阅：</h3><br>
+             <?php if($uidwxkey['wxkey']) { ?>
+             <h3 style="font-size:14px;">1、搜索微信号：<?=$uidwxkey['wxkey']?></h3>
+             <?php } ?>
+              <?php if($uidwxkey['weixinname']) { ?>
+             <h3 style="font-size:14px;">2、关注微信公众账号：<?=$uidwxkey['weixinname']?></h3>
+             <?php } ?>
+         </div><!-- / -->
  </div>
 
 
@@ -128,5 +160,19 @@
 </div><!-- content -->
 </div><!-- page -->
 </body>
+     <script type="text/javascript" charset="utf-8">
+         function showDIv(){
+        document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+         document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+        }
+         function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+        }
+  </script>
 </html>
 <?php ob_out();?>

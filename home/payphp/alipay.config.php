@@ -20,10 +20,10 @@
  
 //↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 //合作身份者id，以2088开头的16位纯数字
-$alipay_config['partner']		= '2088701214409631';
+$alipay_config['partner']		= '2088011805314801';
 
 //安全检验码，以数字和字母组成的32位字符
-$alipay_config['key']			= '9e6q5oq4ow7yq39qtymxjdu8xwgf0o29';
+$alipay_config['key']			= 'amqhiwffh5bg0wi5lz853cq6mb3y2rh8';
 
 
 //↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑

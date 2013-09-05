@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <title>$zhong[subject]</title>
 		<meta charset = "utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
 		<link rel = "stylesheet" type = "text/css" href = "./template/css/main.css">
+		<link rel="stylesheet" href="./template/css/base.css" />
+		<link rel="stylesheet" href="./template/css/expressInfo.css" />
+		<style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background:url(./template/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+        </style>
 	</head>
-	<body> 
+	<body>
+	 <div id="bg" onclick="hideDiv();">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+        <div id="bg2" onclick="hideFriendDIv();">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div> 
 		<div class = "article">
 			<h3>$zhong[subject]</h3>
 			<span class = "info_content_span subtitle"><!--{date('m-d H:i',$zhong[dateline],1)}--></span>
@@ -40,7 +52,31 @@
 				电　话： 0769-8015<br />
 				网　址： http://www.meilife.com -->
 			</div>
-			<input type = "button" class = "buy_btn btn" value = "一键拔号" />
+			<div id="friend" class="friend_wrapper">
+             <a id="" class="friend_btn" style="" onclick="showDIv()">
+                       <img src="./template/img/repost_icon.png" alt="">
+                       <span>发送给朋友</span>
+             </a>
+             <a id="" class="friend_btn" style="margin-left:20px;" onclick="showFriendDIv()">
+                       <img src="./template/img/friend_circle.png" alt="">
+                       <span>分享到朋友圈</span>
+             </a>
+             <h3 style="font-size:14px;margin-bottom:-10px;">安卓用户请点击：</h3>
+             <a id="" class="add_btn" href="weixin://addfriend/$uidwxkey[wxkey]">
+                 <span>关注</span>
+             </a>
+             <h3 style="font-size:14px;margin-bottom:-10px;">iOS用户请订阅：</h3><br>
+             <!--{if $uidwxkey[wxkey]}-->
+             <h3 style="font-size:14px;">1、搜索微信号：$uidwxkey[wxkey]</h3>
+             <!--{/if}-->
+              <!--{if $uidwxkey[weixinname]}-->
+             <h3 style="font-size:14px;">2、关注微信公众账号：$uidwxkey[weixinname]</h3>
+             <!--{/if}-->
+         </div><!-- / -->
+			<div class="button_buy" onclick="">
+          <a href="#" id="colorButton" onmouseover="deeper()" onmouseout="shallower()" tel="$zhong[telephone]">一键拨号</a>
+          <!--<a href="book_info.html"><button id="colorButton" onmouseover="deeper()" onmouseout="shallower()">一键拨号</button></a>-->
+        </div><!-- button_more_2 -->
 		</div>
 <!-- 		<div class = "comment">
 			<div class = "comment_add">
@@ -63,4 +99,18 @@
 			</ul>
 		</div> -->
 	</body>
+	 <script type="text/javascript" charset="utf-8">
+         function showDIv(){
+        document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+         document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+        }
+         function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+        }
+  </script>
 </html>

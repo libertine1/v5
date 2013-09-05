@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_showmenuset|template/default/header|template/default/footer', '1377756163', 'template/default/space_showmenuset');?><?php $_TPL['titles'] = array('应用'); ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_showmenuset|template/default/header|template/default/footer', '1378365163', 'template/default/space_showmenuset');?><?php $_TPL['titles'] = array('应用'); ?>
 <?php $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见'); ?>
 
 <?php if(empty($_SGLOBAL['inajax'])) { ?>
@@ -342,7 +342,7 @@ html>body td {
     <td>  
     <?php if($_GET['moblienum']) { ?>
 <form name="alipayment" action="./payphp/mobliealipayapi.php" method=post target="_blank">
-<input type="hidden" name="WIDseller_email" value="1907983236@qq.com" />
+<input type="hidden" name="WIDseller_email" value="huangjb@koalac.com" />
 <input type="hidden" name="WIDout_trade_no" value="<?=$number?>.<?=$zfbuid?>" />
 <input type="hidden" name="WIDsubject" value="微伍手机模版" />
 <input type="hidden" name="WIDtotal_fee" value="<?=$list['money']?>" />
@@ -350,7 +350,7 @@ html>body td {
 <input type="hidden" name="WIDshow_url" value="欢迎选购微伍手机模版" />
     <?php } else { ?>
 <form name="alipayment" action="./payphp/alipayapi.php" method=post target="_blank">
-<input type="hidden" name="WIDseller_email" value="1907983236@qq.com" />
+<input type="hidden" name="WIDseller_email" value="huangjb@koalac.com" />
 <input type="hidden" name="WIDout_trade_no" value="<?=$number?>.<?=$zfbuid?>" />
 <input type="hidden" name="WIDsubject" value="微伍应用" />
 <input type="hidden" name="WIDtotal_fee" value="<?=$allcost?>" />

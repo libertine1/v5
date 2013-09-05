@@ -1,7 +1,11 @@
 * { 
 	margin: 0;	padding: 0; border: 0; 
 	font-family: 'Microsoft yahei' !important;
+	-webkit-tap-highlight-color: rgba(0, 0, 0 ,0);
 }
+
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
 
 body{
 	font-family: 'Microsoft yahei' !important;
@@ -16,7 +20,7 @@ body{
 }
 
 .banner_text{
-	background: url("img/banner_text.png") repeat-x;
+	background: url("./template/css/img/banner_text.png") repeat-x;
 	width: 100%;
     position: relative;
     margin-top: -35px;
@@ -86,6 +90,17 @@ body{
 	background-color: rgb(66, 184, 177);
 	box-shadow: 1px 1px 3px rgb(100, 100, 100);
 	color: white;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.mt55{
+	margin-top: 55px;
+}
+
+.mb10{
+	margin-bottom: 10px;
 }
 
 .navigation span{
@@ -117,41 +132,56 @@ body{
 	text-decoration: none;
 }
 
-.list li div{
+.listOuter{
 	overflow: hidden;
 	border-left: 5px solid rgb(118, 209, 205);
 	box-shadow: 1px 1px 3px #BCBCBC;
+	height: 84px;
+	background-color: white;
 }
 
-.list li a div img{
-	max-width: 75px;
+.listInner{
+	width: 72%;
+	height: 45px;
+	overflow: hidden;
+	margin-top: 7px;
+}
+
+.list li img{
+	max-width: 69px;
 	float: right;
+	position: relative;
+	margin-right: 7px;
+	margin-top: 7px;
 }
 
-.list li div h4{
-	padding: 18px 0 0 3.4375%;
+.list h4{
+	padding: 4px 0 0 10px;
 	color: rgb(100, 100, 100);
+	font-size: 15px;
+	line-height: 1.2;
 }
 
-.list li div h4	span{
+.list h4 span{
 	padding-left: 3.75%;
 	color: rgb(66, 184, 177);
 }
 
 .info_span{
-	padding: 0 0 0 3.4375%;
+	padding: 0 0 0 10px;
 }
 
 .subtitle{
 	color: rgb(204, 204, 204);
-	font-size: small;
+	font-size: 12px;
+	line-height: 1.5;
 }
 
 .more_button{
 	color: white;
 	background-color: rgb(118, 209, 205);
 	font-size: 18px;
-	margin: 0 3.125%;
+	margin: 0 3.125% 10px;
 	width: 93.75%;
 	height: 40px;
 	cursor: pointer;
@@ -177,15 +207,15 @@ body{
 	color: rgb(66, 184, 177);
 }
 
-.article .article_content{
+.article_content{
 	margin-top: 10px;
 }
 
-.article .article_content p{
-	text-indent: 2em;
+.article_content p{
+	text-indent: 0em;
 }
 
-.article .article_content img{
+.article_content img{
 	width: 100%;
 	margin-bottom: 10px;
 }
@@ -250,6 +280,7 @@ body{
 	border: 1px solid #DDDDDD;
 	display: inline;
 	vertical-align: middle;
+	font-size: 14px;
 }
 
 .btn{
@@ -297,7 +328,7 @@ body{
 
 /*product_content*/
 .colour{
-	color: rgb(122, 208, 205);
+	color: rgb(122, 208, 205) !important;
 }
 
 .underline{
@@ -317,4 +348,143 @@ body{
 	width: 36.25%;
 }
 
+.ml35{
+	margin-left: 35px;
+}
 
+/*online*/
+.onlineComment{
+	box-shadow: -1px -1px 3px rgb(100, 100, 100);
+	background-color: rgb(240, 240, 240);;
+	position: fixed;
+	width: 100%;
+	height: 86px;
+	bottom: 0;
+}
+
+.onlineComment .comment_area{
+	width: 64.2%;
+	height: 63px;
+}
+
+.ask_btn{
+	width: 24%;
+	height: 70px;
+	display: inline;
+	vertical-align: middle;
+	font-size: 16px;
+}
+
+.mb100{
+	margin-bottom: 100px;
+}
+
+.onlineArticle{
+	min-height: 100%;
+}
+
+.chat{
+	list-style: none;
+}
+
+.chat img{
+	width: 40px;
+}
+
+.chat li{
+	margin-bottom: 15px;
+}
+
+.chat li>div{
+	overflow: hidden;
+	position: relative;
+}
+
+.chatMessage{
+	display: inline-block;
+	padding: 14px 10px;
+	max-width: 65%;
+}
+
+.chatMessage p{
+	text-indent: 0;
+}
+
+.right_triangle{
+	width: 12px !important;
+	margin-right: 10px;
+}
+
+.left_triangle{
+	width: 12px !important;
+	margin-left: 10px;
+}
+
+.fr{
+	float: right;
+}
+
+.fl{
+	float: left;
+}
+
+.color1{
+	background-color: rgb(240, 240, 240);
+	color: black;
+}
+
+.color2{
+	background-color: rgb(122, 208, 205);
+	color: white;
+}
+
+.color1 span{
+	color: rgb(180, 180, 180);
+}
+
+.color2 span{
+	color: rgb(240, 240, 240);
+}
+
+/*详情页面转发朋友圈*/
+.friend_wrapper {
+  width: 260px;
+  margin: 20px auto;
+}
+.friend_btn {
+  display: block;
+  background: #EEEEEE;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 20px;
+  float: left;
+  font-size: 13px;
+}
+.friend_btn img {
+  width: 24px;
+  height: 24px;
+  padding-top: 3px;
+  padding-left: 10px;
+  vertical-align: -7px;
+}
+.friend_btn:hover {
+  background: #ccc;
+  text-decoration: none;
+}
+.add_btn {
+  display: block;
+  background: #7AD0CD;
+  margin: 20px auto;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+}
+.add_btn span {
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+.add_btn:hover {
+  background: #4ABFBC;
+  text-decoration: none;
+}

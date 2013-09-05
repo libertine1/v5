@@ -87,7 +87,11 @@ class wechatCallbackapiTest
                       $zhong2 = mysql_query("SELECT * FROM uchome_recommend  WHERE uid='$row[uid]'");
                       $wei2 = mysql_fetch_array($zhong2);
                       $name=$wei2[subject];
-                      $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                      if($wei2['recommendlink']){
+                      $url = "$wei2[recommendlink]";
+                      }else{
+                      $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];  
+                      }
                       $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                       $articles[] = makeArticleItem($name, $name, $pic, $url);
                       for($i=0;$i<$count;$i++){
@@ -269,10 +273,14 @@ class wechatCallbackapiTest
                       $app = file_get_contents($appurl,0,null,null);
                       $app_output = json_decode($app);
                       $count=$app_output->data->count;
-                       $zhong2 = mysql_query("SELECT * FROM uchome_recommend  WHERE uid='$row[uid]'");
-                  $wei2 = mysql_fetch_array($zhong2);
-                  $name=$wei2[subject];
-                    $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];
+                      $zhong2 = mysql_query("SELECT * FROM uchome_recommend  WHERE uid='$row[uid]'");
+                      $wei2 = mysql_fetch_array($zhong2);
+                      $name=$wei2[subject];
+                  if($wei2['recommendlink']){
+                      $url = "$wei2[recommendlink]";
+                      }else{
+                      $url = "http://v5.home3d.cn/home/wx/wx.php?do=home&uid=".$row[uid];  
+                      }
                     $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                     $articles[] = makeArticleItem($name, $name, $pic, $url);
                       for($i=0;$i<$count;$i++){

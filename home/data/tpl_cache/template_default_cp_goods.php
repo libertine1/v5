@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/cp_goods|template/default/header|template/default/cp_topic_menu|template/default/footer|template/default/space_topic_inc', '1377791585', 'template/default/cp_goods');?><?php if(empty($_SGLOBAL['inajax'])) { ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/cp_goods|template/default/header|template/default/cp_topic_menu|template/default/footer|template/default/space_topic_inc', '1378377005', 'template/default/cp_goods');?><?php if(empty($_SGLOBAL['inajax'])) { ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -323,6 +323,11 @@
                             <div class="post_list container_12">
                          <span class="select_title grid_1">淘宝链接&nbsp;&nbsp;:</span>
                            <input type="text" class="t_input" id="taobaourl" name="taobaourl" value="<?=$goods['taobaourl']?>"  onblur="relatekw();" placeholder="注意输入有效的url" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1" style="padding-right:20px;">货到付款功能&nbsp;&nbsp;:</span>
+                           开启:<input type="radio" class="t_input" id="goodscod" name="goodscod" value="1"   style = "margin-left:20px;padding-right:20px;"/>
+                            关闭:<input type="radio" class="t_input" id="goodscod"  CHECKED  name="goodscod" value="0"   style = "margin-left:20px;"/>
                             </div>
                    </div>
 </td>

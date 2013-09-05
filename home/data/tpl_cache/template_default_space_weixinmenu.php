@@ -1,7 +1,8 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1377794516', 'template/default/space_weixinmenu');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1378377288', 'template/default/space_weixinmenu');?>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>v5v5v5v5</title>
+    <title>微信自定义菜单</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <!-- Bootstrap -->
@@ -184,103 +185,104 @@
           <script type="text/javascript">
           $(document).ready(function(){
             $('#weixin').attr("style", "display:none;");
+            
             $('#weixinhome').click(function (e) {
-                $("#what").append("<input type='hidden' name='type' value='frist' id='type'>");
+                $("#what").html("<input type='hidden' name='type' value='frist' id='type'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });        
             $('#weixinhome1').click(function (e) {
-                $("#what").append("<input type='hidden' name='type' value='second' id='type'>");
+                $("#what").html("<input type='hidden' name='type' value='second' id='type'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome2').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+             $('#1weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome3').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
-                e.preventDefault();
-                $('#weixin').modal();
-                   }); 
-            $('#weixinhome4').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+            $('#1weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome5').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+            $('#1weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome6').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+            $('#1weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome7').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+            $('#1weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome8').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+            $('#2weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome9').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+            $('#2weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome10').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+            $('#2weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome11').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+            $('#2weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome12').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+            $('#2weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome13').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+            $('#3weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome14').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+            $('#3weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome15').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+            $('#3weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
-            $('#weixinhome16').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+            $('#3weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#3weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
             $('#weixinhome17').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                $("#what").html("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
             $('#weixinhome18').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                $("#what").html("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });
             $('#weixinhome19').click(function (e) {
-                $("#what").append("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                $("#what").html("<input type='hidden' name='button' value='function' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
                 e.preventDefault();
                 $('#weixin').modal();
                    });                              
@@ -328,11 +330,11 @@ $(document).ready(function() {
                          微信自定义菜单
                      </div>
                      <a href="cp.php?ac=weixinmenu" class="btn grid_2">生成菜单</a>
-                     <a href="space.php?do=weixinmenu&edit=1" class="btn grid_2">修改</a>
+                    <!--  <a href="space.php?do=weixinmenu&edit=1" class="btn grid_2">修改</a> -->
                  </div> 
                 <?php if(empty($list)) { ?>
                  <div class="content_detail_wrapper">
-                   <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}">
+                   <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}" enctype="multipart/form-data">
                      <div class="left_weixin">
                         <div class="weixin_header">
                             <img src="./template/default/image/wx_header.png" alt="">
@@ -340,11 +342,11 @@ $(document).ready(function() {
                         <div class="wx_body">  
                           <div class="weixin_choose">
                               <div class="wx_choose_img">
-                                    <span>点击添加图片</span>
-                                    <input type="file">
+                                    <span style="text-align:center;margin-left:60px;margin-top:20px;">点击更换图片</span>
+                                    <input type="file" name="file1">
                               </div> 
                               
-                              <input type="text" class="input_text" value="输入欢迎语" onFocus="this.value=''">
+                              <input type="text" class="input_text" value="输入欢迎语" onFocus="this.value=''" name="focusname">
                              
                               <div class="article_choose" id="weixinhome">
                                  <span>点击选择文章</span>
@@ -398,9 +400,9 @@ $(document).ready(function() {
                         </div>
                           <div class="wx_nav">
                                 <ul>
-                                  <li style="border-left:1px solid #CCCCCC;"><input type="text" name="button1" placeholder="请填写" tag="1"  class="first_menu"><div id="weixinhome17" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                  <li><input type="text" placeholder="请填写" name="button2"  tag="2" class="first_menu"><div id="weixinhome18" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                  <li><input type="text" placeholder="请填写" tag="3"  name="button3" class="first_menu"><div id="weixinhome19" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
+                                  <li style="border-left:1px solid #CCCCCC;"><input type="text" name="button1" placeholder="请填写" tag="1"  class="first_menu"></li>
+                                  <li><input type="text" placeholder="请填写" name="button2"  tag="2" class="first_menu"></li>
+                                  <li><input type="text" placeholder="请填写" tag="3"  name="button3" class="first_menu"></li>
                                 </ul>
                           </div>
 
@@ -579,7 +581,7 @@ showreward();
               $(this).parent().hide();
               // var new_r=r+""；
               $(".erji_box[tag=" + r + "]").show();
-              $(".erji_box[tag=" + r + "]").children().children(".add").hide();
+
               $(this).parent().parent().css({"position":"relative","z-index":"1"});
             });
 
@@ -623,6 +625,7 @@ showreward();
                       
                     }
                               }
+               
                             })
                    } 
                    that.hide();  
@@ -634,6 +637,7 @@ showreward();
                   var that=$(this);
                   var placeholder_val=$(this).parent().next().children("input").val();
                   // alert(placeholder_val);
+                  b++;
                    if(placeholder_val!="" && placeholder_val!="请填写"){
                     if ($(this).parent("li").siblings().children(".add_input").length<4){
                         $(this).parent().prev("li").remove();
@@ -657,18 +661,19 @@ showreward();
                       
                     }
                               }
+                    
                             })
                    } 
                    that.hide();  
                 }
               );
-              var c=1;
-                 $(".add2").click(
+               var c=1;
+               $(".add2").click(
                 function(){
                   var that=$(this);
                   var placeholder_val=$(this).parent().next().children("input").val();
-                  var dd="<?=$list['2']?>[sub_button"+c+"]";
                   // alert(placeholder_val);
+                  c++;
                    if(placeholder_val!="" && placeholder_val!="请填写"){
                     if ($(this).parent("li").siblings().children(".add_input").length<4){
                         $(this).parent().prev("li").remove();
@@ -692,6 +697,7 @@ showreward();
                       
                     }
                               }
+                    
                             })
                    } 
                    that.hide();  
@@ -700,9 +706,18 @@ showreward();
 
         })
     </script>
-     <?php } else { ?>  
+     <?php } else { ?>
+     <?php if(empty($list['0']['sub_function1'])&&empty($list['1']['sub_function1'])&&empty($list['0']['sub_function2'])) { ?>
+     <script type="text/javascript">
+     $(document).ready(function(){
+      $('#tip').attr("style", "display:block;");
+     $('#tip').modal();
+     preventDefault();
+   })
+     </script>
+     <?php } ?>
                           <div class="content_detail_wrapper">
-                   <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}">
+                   <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}" enctype="multipart/form-data">
                      <div class="left_weixin">
                         <div class="weixin_header">
                             <img src="./template/default/image/wx_header.png" alt="">
@@ -710,47 +725,48 @@ showreward();
                         <div class="wx_body">  
                           <div class="weixin_choose">
                               <div class="wx_choose_img">
-                                    <span>点击添加图片</span>
-                                    <input type="file">
+                                    <?php if(empty($value2['imageurl'])) { ?><span style="text-align:center;margin-left:60px;margin-top:20px;">点击更换图片</span><input type="file" name="file1" ><?php } else { ?><input type="file" name="file1"><img src="<?=$value2['imageurl']?>" style="height:82px;width:222px;margin-top:-60px;"><?php } ?>
+                                    
                               </div> 
                               
-                              <input type="text" class="input_text" value="输入欢迎语" onFocus="this.value=''">
+                             <?php if(empty($value2['name'])) { ?> <input type="text"   class="input_text"
+                             style="width: 216px;" value="输入欢迎语" onFocus="this.value=''" name="focusname"><?php } else { ?><input type="text"  class="input_text" style="width: 216px;" value="<?=$value2['name']?>" onFocus="this.value=''"  name="focusname"><?php } ?>
                              
                               <a href="#"><div class="article_choose" id="weixinhome">
-                                 <span>点击选择文章</span>
-                                 <img src="./template/default/image/avata1.png" alt="">
+                                 <?php if(empty($value3['number'])) { ?><span>点击选择文章</span><?php } else { ?><?=$newvalue3['subject']?><?php } ?>
+                                 <img src="<?=$newvalue3['imageurl']?>" alt="">
                               </div></a>
                                  <a href="#"><div class="article_choose" id="weixinhome1">
-                                 <span>点击选择文章</span>
-                                 <img src="./template/default/image/avata1.png" alt="">
+                                  <?php if(empty($value4['number'])) { ?><span>点击选择文章</span><?php } else { ?><?=$newvalue4['subject']?><?php } ?>
+                                 <img src="<?=$newvalue4['imageurl']?>" alt="">
                               </div></a>
 
                           </div>
-                              <div class="erji_box_wrap">
-                           <ul style="" class="erji_box" tag="1">
-                              <li><input type="text" class="erji_input" name="1sub_button5" value="<?=$list['0']['sub_button5']?>"  placeholder="请填写"/><div id="weixinhome2" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>  
-                              <li><input type="text" class="erji_input" name="1sub_button4" value="<?=$list['0']['sub_button4']?>"  placeholder="请填写"/><div id="weixinhome3" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                              <li><input type="text" class="erji_input" name="1sub_button3" value="<?=$list['0']['sub_button3']?>"  placeholder="请填写"/><div id="weixinhome4" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                              <li><input type="text" class="erji_input" name="1sub_button2" value="<?=$list['0']['sub_button2']?>"  placeholder="请填写"/><div id="weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                              <li><input type="text" class="erji_input" name="1sub_button1" value="<?=$list['0']['sub_button1']?>"  placeholder="请填写"/><div id="weixinhome6" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
+                              <div class="erji_box_wrap" >
+                           <ul style="" class="erji_box" tag="1" >
+                              <li> <?php if($list['0']['sub_button5']) { ?><input type="text" class="erji_input" id="1sub_button5" name="1sub_button5" value="<?=$list['0']['sub_button5']?>"  placeholder="请填写"/><div id="1weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['0']['sub_function5'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count=='5') { ?><img src='./template/default/image/erji_add.png' class='add1'><?php } ?><?php } ?> </li> 
+                              <li><?php if($list['0']['sub_button4']) { ?><input type="text" class="erji_input" id="1sub_button4" name="1sub_button4" value="<?=$list['0']['sub_button4']?>"  placeholder="请填写"/><div id="1weixinhome4" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['0']['sub_function4'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count=='4') { ?><img src='./template/default/image/erji_add.png' class='add1'><?php } ?><?php } ?></li>
+                              <li><?php if($list['0']['sub_button3']) { ?><input type="text" class="erji_input" id="1sub_button3" name="1sub_button3" value="<?=$list['0']['sub_button3']?>"  placeholder="请填写"/><div id="1weixinhome3" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['0']['sub_function3'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count=='3') { ?><img src='./template/default/image/erji_add.png' class='add1'><?php } ?><?php } ?></li>
+                              <li><?php if($list['0']['sub_button2']) { ?><input type="text" class="erji_input" id="1sub_button2" name="1sub_button2" value="<?=$list['0']['sub_button2']?>"  placeholder="请填写"/><div id="1weixinhome2" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['0']['sub_function2'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count=='2') { ?><img src='./template/default/image/erji_add.png' class='add1'><?php } ?><?php } ?></li>
+                              <li><?php if($list['0']['sub_button1']) { ?><input type="text" class="erji_input" id="1sub_button1" name="1sub_button1" value="<?=$list['0']['sub_button1']?>"  placeholder="请填写"/><div id="1weixinhome1" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['0']['sub_function1'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count=='1') { ?><img src='./template/default/image/erji_add.png' class='add1'><?php } ?><?php } ?></li>
                           </ul>
                           </div>
                             <div class="erji_box_wrap">
                            <ul style="" class="erji_box" tag="2">
-                                <li><input type="text" class="erji_input" name="2sub_button5" value="<?=$list['1']['sub_button5']?>" placeholder="请填写"/><div id="weixinhome7" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                 <li><input type="text" class="erji_input" name="2sub_button4" value="<?=$list['1']['sub_button4']?>"  placeholder="请填写"/><div id="weixinhome8" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                <li><input type="text" class="erji_input" name="2sub_button3" value="<?=$list['1']['sub_button3']?>"  placeholder="请填写"/><div id="weixinhome9" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                <li><input type="text" class="erji_input" name="2sub_button2" value="<?=$list['1']['sub_button2']?>"  placeholder="请填写"/><div id="weixinhome10" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                                <li><input type='text' placeholder='请填写'  name='2sub_button1' class='add_input' value="<?=$list['1']['sub_button1']?>"><div id="weixinhome11" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
+                                <li><?php if($list['1']['sub_button5']) { ?><input type="text" class="erji_input" name="2sub_button5" value="<?=$list['1']['sub_button5']?>" placeholder="请填写"/><div id="2weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['1']['sub_function5'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count1=='5') { ?><img src='./template/default/image/erji_add.png' class='add2'><?php } ?><?php } ?> </li>
+                                 <li><?php if($list['1']['sub_button4']) { ?><input type="text" class="erji_input" name="2sub_button4" value="<?=$list['1']['sub_button4']?>"  placeholder="请填写"/><div id="2weixinhome4" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['1']['sub_function4'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count1=='4') { ?><img src='./template/default/image/erji_add.png' class='add2'><?php } ?><?php } ?></li>
+                                <li><?php if($list['1']['sub_button3']) { ?><input type="text" class="erji_input" name="2sub_button3" value="<?=$list['1']['sub_button3']?>"  placeholder="请填写"/><div id="2weixinhome3" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['1']['sub_function3'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count1=='3') { ?><img src='./template/default/image/erji_add.png' class='add2'><?php } ?><?php } ?></li>
+                                <li><?php if($list['1']['sub_button2']) { ?><input type="text" class="erji_input" name="2sub_button2" value="<?=$list['1']['sub_button2']?>"  placeholder="请填写"/><div id="2weixinhome2" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['1']['sub_function2'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count1=='2') { ?><img src='./template/default/image/erji_add.png' class='add2'><?php } ?><?php } ?></li>
+                                <li><?php if($list['1']['sub_button1']) { ?><input type='text' placeholder='请填写'  name='2sub_button1' class='add_input' value="<?=$list['1']['sub_button1']?>"><div id="2weixinhome1" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['1']['sub_function1'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count1=='1') { ?><img src='./template/default/image/erji_add.png' class='add2'><?php } ?><?php } ?></li>
                           </ul>
                           </div>
                           <div class="erji_box_wrap">
                            <ul style="" class="erji_box" tag="3">
-                           <li><input type="text" class="erji_input" name="3sub_button5" value="<?=$list['2']['sub_button5']?>"  placeholder="请填写"/><div id="weixinhome12" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                           <li><input type="text" class="erji_input" name="3sub_button4" value="<?=$list['2']['sub_button4']?>"  placeholder="请填写"/><div id="weixinhome13" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                           <li><input type="text" class="erji_input" name="3sub_button3" value="<?=$list['2']['sub_button3']?>"  placeholder="请填写"/><div id="weixinhome14" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                            <li><input type="text" class="erji_input" name="3sub_button2" value="<?=$list['2']['sub_button2']?>"  placeholder="请填写"/><div id="weixinhome15" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
-                            <li><input type="text" class="erji_input" name="3sub_button1" value="<?=$list['2']['sub_button1']?>"  placeholder="请填写"/><div id="weixinhome16" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div></li>
+                           <li><?php if($list['2']['sub_button5']) { ?><input type="text" class="erji_input" name="3sub_button5" value="<?=$list['2']['sub_button5']?>"  placeholder="请填写"/><div id="3weixinhome5" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['2']['sub_function5'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count2=='5') { ?><img src='./template/default/image/erji_add.png' class='add3'><?php } ?><?php } ?></li>
+                           <li><?php if($list['2']['sub_button4']) { ?><input type="text" class="erji_input" name="3sub_button4" value="<?=$list['2']['sub_button4']?>"  placeholder="请填写"/><div id="3weixinhome4" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['2']['sub_function4'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count2=='4') { ?><img src='./template/default/image/erji_add.png' class='add3'><?php } ?><?php } ?></li>
+                           <li><?php if($list['2']['sub_button3']) { ?><input type="text" class="erji_input" name="3sub_button3" value="<?=$list['2']['sub_button3']?>"  placeholder="请填写"/><div id="3weixinhome3" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['2']['sub_function3'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count2=='3') { ?><img src='./template/default/image/erji_add.png' class='add3'><?php } ?><?php } ?></li>
+                            <li><?php if($list['2']['sub_button2']) { ?><input type="text" class="erji_input" name="3sub_button2" value="<?=$list['2']['sub_button2']?>"  placeholder="请填写"/><div id="3weixinhome2" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['2']['sub_function2'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count2=='2') { ?><img src='./template/default/image/erji_add.png' class='add3'><?php } ?><?php } ?></li>
+                            <li><?php if($list['2']['sub_button1']) { ?><input type="text" class="erji_input" name="3sub_button1" value="<?=$list['2']['sub_button1']?>"  placeholder="请填写"/><div id="3weixinhome1" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><?php if(empty($list['2']['sub_function1'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } else { ?><?php if($count2=='1') { ?><img src='./template/default/image/erji_add.png' class='add3'><?php } ?><?php } ?></li>
                               
                                 
                               
@@ -769,10 +785,10 @@ showreward();
                         </div>
                           <div class="wx_nav">
                                 <ul>
-                                  <li style="border-left:1px solid #CCCCCC;"><input type="text" name="button1" placeholder="请填写" tag="1" value="<?=$list['0']['button']?>" class="first_menu"><?php if(empty($list['0']['sub_button1'])) { ?><div id="weixinhome17" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><?php } ?></li>
+                                  <li style="border-left:1px solid #CCCCCC;"><input type="text" name="button1" placeholder="请填写" tag="1" value="<?=$list['0']['button']?>" class="first_menu" style="margin-top"><?php if(empty($list['0']['sub_button1'])) { ?><div id="weixinhome17" style="float: right;margin-left: 80px;margin-top: -65px;z-index: 999;position: absolute;"><?php if(empty($list['0']['function'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } ?></li>
 
-                                  <li><input type="text" placeholder="请填写" name="button2" value="<?=$list['1']['button']?>" tag="2" class="first_menu"><?php if(empty($list['1']['sub_button1'])) { ?><div id="weixinhome18" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><?php } ?></li>
-                                  <li><input type="text" placeholder="请填写" tag="3" value="<?=$list['2']['button']?>" name="button3" class="first_menu"><?php if(empty($list['2']['sub_button1'])) { ?><div id="weixinhome19" style="float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;"><img  src="./template/default/image/edit.png"></div><?php } ?></li>
+                                  <li><input type="text" placeholder="请填写" name="button2" value="<?=$list['1']['button']?>" tag="2" class="first_menu"><?php if(empty($list['1']['sub_button1'])) { ?><div id="weixinhome18" style="float: right;margin-left: 80px;margin-top: -65px;z-index: 999;position: absolute;"><?php if(empty($list['1']['function'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } ?></li>
+                                  <li><input type="text" placeholder="请填写" tag="3" value="<?=$list['2']['button']?>" name="button3" class="first_menu"><?php if(empty($list['2']['sub_button1'])) { ?><div id="weixinhome19" style="float: right;margin-left: 80px;margin-top: -65px;z-index: 999;position: absolute;"><?php if(empty($list['2']['function'])) { ?><img  src="./template/default/image/add_menu.png"><?php } else { ?><img  src="./template/default/image/add_menu_c.png"><?php } ?></div><?php } ?></li>
                                 </ul>
                           </div>
 
@@ -915,10 +931,183 @@ showreward();
 </body>
 </html>
 <?php } ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
 <script type="text/javascript">
          $(document).ready(function(){
           $(".erji_box").show();
           })
+
+         var a="<?=$count?>";
+         var b="<?=$count1?>";
+         var c="<?=$count2?>";   
+               $(".add1").click(
+                function(){
+                  $(this).hide();
+                  var that=$(this);        
+                if (a<6){
+                        $(this).parent().prev("li").remove();
+                        $(this).parent().after("<li><input type='text' placeholder='请填写'  name='1sub_button"+a+"' class='add_input'></li><div id='1weixinhome"+a+"' style='float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;'><img  src='./template/default/image/add_menu.png'></div>");
+                         if (a==5){
+                           $(this).attr("style","margin-top:40px;");
+                           $(".add1").parent("li").remove();  
+                     
+                     }
+                    
+                     
+                     }               //$(this).parent().prev("li").remove();
+                $(".add_input").bind("blur keydown",function(){
+                              if(event.keyCode == 13){
+                                  var that=$(this);
+                    if (a<6) {
+                      that.parent().siblings().children(".add1").show();
+                    }
+                  }
+                
+  
+                }) 
+              a++;
+              $('#1weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#1weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#1weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#1weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#1weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='1' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+                }
+              );
+              
+              $(".add2").click(
+                function(){
+                  $(this).hide();
+                  var that=$(this);        
+                if (b<6){
+                        $(this).parent().prev("li").remove();
+                        $(this).parent().after("<li><input type='text' placeholder='请填写'  name='2sub_button"+b+"' class='add_input'></li><div id='2weixinhome"+b+"' style='float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;'><img  src='./template/default/image/add_menu.png'></div>");
+                         if (b==5){
+                           $(this).attr("style","margin-top:40px;");
+                           $(".add2").parent("li").remove();  
+                     
+                     }
+                    
+                     
+                     }               //$(this).parent().prev("li").remove();
+                $(".add_input").bind("blur keydown",function(){
+                              if(event.keyCode == 13){
+                                  var that=$(this);
+                    if (a<6) {
+                      that.parent().siblings().children(".add2").show();
+                    }
+                  }
+                
+  
+                }) 
+              b++;
+              $('#2weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#2weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#2weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#2weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#2weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='2' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+                }
+              );
+          
+           $(".add3").click(
+                function(){
+                  $(this).hide();
+                  var that=$(this);        
+                if (c<6){
+                        $(this).parent().prev("li").remove();
+                        $(this).parent().after("<li><input type='text' placeholder='请填写'  name='3sub_button"+c+"' class='add_input'></li><div id='3weixinhome"+c+"' style='float: right;margin-left: 70px;margin-top: -45px;z-index: 999;position: absolute;'><img  src='./template/default/image/add_menu.png'></div>");
+                         if (c==5){
+                           $(this).attr("style","margin-top:40px;");
+                           $(".add3").parent("li").remove();  
+                     
+                     }
+                    
+                     
+                     }               //$(this).parent().prev("li").remove();
+                $(".add_input").bind("blur keydown",function(){
+                              if(event.keyCode == 13){
+                                  var that=$(this);
+                    if (c<6) {
+                      that.parent().siblings().children(".add3").show();
+                    }
+                  }
+                
+  
+                }) 
+
+            $('#3weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+              c++;
+              $('#3weixinhome5').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function5' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#3weixinhome4').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function4' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#3weixinhome3').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function3' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#3weixinhome2').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function2' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+            $('#3weixinhome1').click(function (e) {
+                $("#what").html("<input type='hidden' name='button' value='sub_function1' id='button'><input type='hidden' name='fathernum' value='3' id='fathernum'>");
+                e.preventDefault();
+                $('#weixin').modal();
+                   });
+                }
+              );
          </script>
                 <!--               <script src="./source/placeholder.js"></script>
   <script type="text/javascript">
@@ -958,6 +1147,15 @@ showreward();
             <input type="hidden" name="functionweixin" value="1">
             <div id="what"></div>
             </form>
+            </div>
+            <div id="tip">
+
+            <br/>
+           <h3 style="font-size:20px;color:#44B1BA;text-align:center;margin:0 auto;line-height:40px;">  
+         请选择相应自定义菜单的相应功能。
+         </h3>
+         <br/>
+  
             </div>
 
 

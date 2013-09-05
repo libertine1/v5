@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/bind', '1377052119', './wx/template/bind');?><!DOCTYPE HTML>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/bind', '1377965653', './wx/template/bind');?><!DOCTYPE HTML>
 <html>
 <HEAD>
 <TITLE>FamilyDay，让一家人团聚</TITLE>

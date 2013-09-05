@@ -1,27 +1,19 @@
 <?php
-
-$milliSecond = strftime("%H%M%S",time());
-$rndFileName = "./tmpfile/".$milliSecond.".jpg";
-file_put_contents($rndFileName, file_get_contents($_GET["url"]));
-
-$url = "http://www.familyday.com.cn/dapi/cp.php?ac=upload";
-$file_name_with_full_path = realpath($rndFileName);
-$data = array(
-	"op"=>"uploadphoto",
-	"topicid"=>"0",
-	"pic_title"=>"",
-	"m_auth"=>$_GET["m_auth"],
-	"Filedata"  => "@".$file_name_with_full_path,    
-);
-$result = uploadByCURL($data,$url);
-runlog('upload', $result);
-
-$result = json_decode($result);
-$picid = $result->data->picid;
-
-$url = "http://www.familyday.com.cn/dapi/cp.php?ac=photo&m_auth=".$_GET["m_auth"]."&title[".$picid."]=&message=".$_GET["message"]."&friend=0&come=wx&makefeed=1&photosubmit=1&tags=Ĭ�Ͽռ�";
-$result = file_get_contents($url);
-runlog('upload', $result);
-
-unlink($file_name_with_full_path);
+if($_POST['buy']){
+	$username=$_POST['username'];
+	$tel=$_POST['tel'];
+	$place=$_POST['place'];
+	$viewuid=$_POST['viewuid'];
+	$number=$_POST['number'];
+	$uid=$_SGLOBAL['supe_uid'];
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$uid' AND viewuid='$viewuid'");
+	$value = $_SGLOBAL['db']->fetch_array($query);
+	if($value){
+	updatetable("goodscod",array('username'=>$username,'tel'=>$tel,'place'=>$place,'number'=>$number),array('viewuid'=>$viewuid,'uid'=>$uid));
+	}else{
+	inserttable("goodscod",array('username'=>$username,'tel'=>$tel,'number'=>$number,'place'=>$place,'viewuid'=>$viewuid,'uid'=>$uid));
+	}
+	echo '<script language="javascript">alert("提交成功,我们会尽快为你发货。");</script>';
+	echo '<script language="javascript">history.go(-1);</script>';
+}
 ?>

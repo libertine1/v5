@@ -2,7 +2,7 @@
 	/*
 	 * 在线沟通组件
 	 * 这里处理两个页面：All dialog list    Dialog in detail and chat 
-	 * ?do=communicate       ?do=communicate&dialog=
+	 * ?do=dialog       ?do=dialog&dialog=
 	 * 
 	 * */
 	 
@@ -18,10 +18,10 @@
 	 //处理主要页面逻辑
 	 if ($dialogid) {
 		//Dialog in detail and chat
-		$query = $DB->query("SELECT * FROM ".tname("dialog")." as d left  join ".tname("space")." as s on d.uid =s.uid where d.dialogid = $dialogid order by d.dateline desc");
+		$query = $DB->query("SELECT * FROM ".tname("dialog")." as d left  join ".tname("space")." as s on d.uid =s.uid where d.dialogid = $dialogid order by d.dialog_dateline DESC");
 		
 		while($value = $DB->fetch_array($query)){
-			$value['dateline'] = date('Y-m-d H:i:s', $value['dateline']);
+			$value['dialog_dateline'] = date('Y-m-d H:i:s', $value['dialog_dateline']);
 			$res[] = $value;
 			
 		}
@@ -37,14 +37,14 @@
 		
 	 }else {
 	 	//All dialog list
-	 	$query = $DB->query("select * from ".tname("questions")." d where d.askid='$space[uid]'");
+	 	$query = $DB->query("select * from ".tname("questions")." d where d.askid='$space[uid]' ORDER BY d.q_dateline DESC");
 		$cnt = 0;
 		while($value = $DB->fetch_array($query)){
 			$value['num'] = $cnt++;
 			$res[] = $value;
 			
 			$res1 = array();
-			$q = $DB->query("select * from ".tname("dialog")." as d left join ".tname("space")." as s on d.uid = s.uid where d.dialogid = '$value[id]' order by d.dateline desc limit 0,2");
+			$q = $DB->query("select * from ".tname("dialog")." as d left join ".tname("space")." as s on d.uid = s.uid where d.dialogid = '$value[id]' order by d.dialog_dateline DESC limit 0,2");
 			while($val = $DB->fetch_array($q)){
 				$res1[] = $val;
 			}

@@ -26,13 +26,13 @@ require_once('Weixin.class.php');
 }else{
 	//include_once(S_ROOT.'./source/function_cp.php');
 	//updateuserstat('hot');
-	$nextuid=$_GET['uid'];
-	$d = get_obj_by_xiaoquid($nextuid);
-	$info = $d->getNewWXUser();	
-	$fakeid=$info['id'];
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE fakeid='$fakeid'");
-	$value = $_SGLOBAL['db']->fetch_array($query);
-	if($value){
+		$nextuid=$_GET['uid'];
+		$d = get_obj_by_xiaoquid($nextuid);
+		$info = $d->getNewWXUser();	
+		$fakeid=$info['id'];
+		$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE fakeid='$fakeid'");
+		$value = $_SGLOBAL['db']->fetch_array($query);
+		if($value){
 		loaducenter();
 		//include_once(S_ROOT.'./source/function_cp.php');
 		//updateuserstat('hot');	
@@ -124,6 +124,7 @@ require_once('Weixin.class.php');
 
  	$uid=$_GET['uid'];
 	$table=$_GET['idtype'];
+
 $query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('menuset')."
 				WHERE english='$table'");
 $value1 = $_SGLOBAL['db']->fetch_array($query1);
@@ -131,12 +132,29 @@ $appname=$value1['subject'];
 	
 $zhong = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf 
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
-				WHERE bf.uid='$uid' and bf.appstatus='1'
+				WHERE bf.uid='$uid' and bf.appstatus='1' and b.style='1'
 				ORDER BY bf.orderid ASC ");
 while ($wei = $_SGLOBAL['db']->fetch_array($zhong)) {
+	if($wei['newname']){
+		$wei['subject']=$wei['newname'];
+	}
 	$zhongwei[]=$wei;
 
+}
+$zhong1 = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf 
+				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
+				WHERE bf.uid='$uid' and bf.appstatus='1' and b.english='goods' and b.style='2'
+				ORDER BY bf.orderid ASC ");
+while ($wei1 = $_SGLOBAL['db']->fetch_array($zhong1)) {
+	if($wei1['newname']){
+		$wei1['subject']=$wei1['newname'];
+	}
+	$zhongwei1[]=$wei1;
+
 }	
+	if($table=="dialog"){
+		$zhongwei2=="1";
+	}
 	$abc = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE uid='$uid'");
 	$bac = $_SGLOBAL['db']->fetch_array($abc);
 	if($bac['moblieclicknum']=="2"){

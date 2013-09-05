@@ -15,6 +15,9 @@
 				ORDER BY bf.orderid ASC ");
 while ($wei = $_SGLOBAL['db']->fetch_array($zhong)) {
 	$wei['icon']=$wei['english'].".png";
+	if($wei['newname']){
+		$wei['subject']=$wei['newname'];
+	}
 	$zhongwei[]=$wei;
 
 }
@@ -24,6 +27,9 @@ while ($wei = $_SGLOBAL['db']->fetch_array($zhong)) {
 				ORDER BY bf.orderid ASC ");
 	while ($wei1 = $_SGLOBAL['db']->fetch_array($zhong1)) {
 	$wei1['icon']="goods.png";
+	if($wei1['newname']){
+		$wei1['subject']=$wei1['newname'];
+	}
 	$zhongwei1[]=$wei1;
 	}
 $abc = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE uid='$uid'");

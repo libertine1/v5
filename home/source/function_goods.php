@@ -115,6 +115,7 @@ function goods_post($POST, $olds=array()) {
 		'oldprice' => $POST['oldprice'],
 		'curprice' => $POST['curprice'],
 		'taobaourl' => $POST['taobaourl'],
+		'goodscod' => $POST['goodscod'],
 		'friend' => $POST['friend'],
 		'password' => $POST['password'],
 		'noreply' => empty($_POST['noreply'])?0:1

@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_menuset_list|template/default/header|template/default/space_menu|template/default/footer', '1377773114', 'template/default/space_menuset_list');?><?php $_TPL['titles'] = array('应用'); ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_menuset_list|template/default/header|template/default/space_menu|template/default/footer', '1378377353', 'template/default/space_menuset_list');?><?php $_TPL['titles'] = array('应用'); ?>
 <?php $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见'); ?>
 
 <?php if(empty($_SGLOBAL['inajax'])) { ?>
@@ -291,7 +291,7 @@
         <div class="grid_6">
                             <div class="index_assembly_box bg1" <?php if($_GET['view']!='me') { ?><?php if(!$value['money']) { ?><?php $value1=$value['zhong']; ?><?php if($value1['appstatus']=='1') { ?>style="background: url('./template/default/image/chosen_bg3.png')!important;"<?php } ?><?php } ?><?php } ?>  id="choice">
                             <div class="assembly_title">
-       <?php if($_GET['change']=='2') { ?><span class="title"><input type="text" value="<?=$value['subject']?>" name="<?=$value['menusetid']?>"></span><?php } else { ?><a href="space.php?uid=<?=$value['uid']?>&do=<?=$do?>&id=<?=$value['menusetid']?>" ><span class="title"><div style="margin-top:-33px;margin-left:10px;"><?=$value['subject']?></div></span></a><?php } ?><span style="font-size:2px;"><?php if($_GET['view']!='me') { ?><?php $value2=$value['zhong']; ?><?php if($value2['cheak']=='1') { ?><a href="space.php?do=menuset&op=add&menusetid=<?=$value['menusetid']?>">（此应用未过期，请戳我重新开通）</a><?php } ?><?php } ?></span><?php if($_GET['view']=='me') { ?><a href="cp.php?ac=menuset&menusetid=<?=$value['menusetid']?>&op=delete1" class="r_option" style="padding-right:10px;padding-top:10px;" id="menuset_delete_<?=$value['menusetid']?>" onclick="ajaxmenu(event, this.id)"><img src="./template/default/image/delete1.gif"></a><?php } ?></div>
+       <?php if($_GET['change']=='2') { ?><span class="title"><input type="text" value="<?=$value['subject']?>" name="<?=$value['menusetid']?>"></span><?php } else { ?><a href="space.php?uid=<?=$value['uid']?>&do=<?=$do?>&id=<?=$value['menusetid']?>" ><span class="title"><?=$value['subject']?></span></a><?php } ?><span style="font-size:2px;"><?php if($_GET['view']!='me') { ?><?php $value2=$value['zhong']; ?><?php if($value2['cheak']=='1') { ?><a href="space.php?do=menuset&op=add&menusetid=<?=$value['menusetid']?>">（此应用未过期，请戳我重新开通）</a><?php } ?><?php } ?></span><?php if($_GET['view']=='me') { ?><a href="cp.php?ac=menuset&menusetid=<?=$value['menusetid']?>&op=delete1" class="r_option" style="padding-right:10px;padding-top:10px;" id="menuset_delete_<?=$value['menusetid']?>" onclick="ajaxmenu(event, this.id)"><img src="./template/default/image/delete1.gif"></a><?php } ?></div>
         <div id="num<?=$value['menusetid']?>">
        <div id="numh<?=$value['menusetid']?>"></div>
         <div class="assembly_info1">
@@ -334,14 +334,15 @@
       </script>
       <?php } ?>
     <?php } } ?>
-    <div class='pagination'><ul><?=$multi?></ul></div>
+    <br/>
+    
    
     <?php if($_GET['view']!='me') { ?>
 <?php if(empty($list)) { ?>
 <div style="text-align:center;">系统没有为你匹配到你所属行业的相关应用，你可以通过修改行业选项。</div>
 
 <?php } else { ?>
- <div class="confirm_btn container_12" style="padding-left:320px;">
+ <div class="confirm_btn container_12" style="width:760px;padding-left:400px;">
                            <input type="submit" id="wei0752" class="btn grid_2"></a>
                       </div>
 <?php } ?>
@@ -349,6 +350,7 @@
 
     
 </div>	
+      <div class='pagination'><ul><?=$multi?></ul></div>
  <?php if($_GET['view']=='me') { ?><?php if($_GET['change']=='1') { ?>
     <div style="padding-bottom: 30px;padding-left:12px;">*如果需要更改应用顺序，请通过修改每个应用下的下拉框进行选择，系统会通过数字大小进行排列。<br/>*务必不要选择2个相同的数字</div>
     

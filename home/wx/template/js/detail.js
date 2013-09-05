@@ -464,6 +464,42 @@ function getDetail(idtype, id, uid){
       }
       });
   }
+      if(idtype=="dialogid"){
+    //var uid=$.query.get('uid');
+    //var id=$.query.get('id');
+    //console.log("http://localhost/new1/v5/home/capi/space.php?do=dialog&uid="+uid+"&dialog="+id+"");
+    $.ajax({
+      dataType: "jsonp",
+      url: "http://v5.home3d.cn/home/capi/space.php?do=dialog&uid="+uid+"&dialog="+id+"",
+       
+      success: function( data ) {
+        /* Get the movies array from the data */
+    //console.log(data);
+        if(data.code==0){
+          data.data.list.dateline = date('Y-m-d H:i',data.data.list.dateline);
+          list = data.data.list;
+
+          q = data.data.q;
+          if(list){
+          for(var i = 0;i < list.length;i ++){
+            var l = list[i];
+            if(l.uid == uid) l.pos = true;
+            else l.pos = false;
+            //console.log(l.pos)
+          }    
+          }
+      //console.log(q);
+          $("#detailTemplate").tmpl(q).appendTo('#detail-panel');
+          if(list){
+          $("#liTemplate").tmpl(list).appendTo('#list-panel');
+          }
+        }else{
+        alert(data.msg);
+        }
+
+      }
+      });
+  }
 }
 
 
@@ -519,6 +555,27 @@ function cpComment(idtype, id, message){
     $("#publishbtn").removeClass('ui-disabled');
     alert("至少写一点东西！");
   }
+}
+
+function ans(uid,rid,message,dialogid){
+  $.ajax({
+    
+    url:"http://localhost/new1/v5/home/capi/cp.php?ac=dialog",
+    type: "POST",
+    data:{
+      "uid":uid,
+      "rid": rid,
+      "message":message,
+      "dialogid":dialogid
+    },
+    success:function(data){
+      //console.log(data);
+      window.location.reload();
+    },
+    error:function(data){
+      //console.log(data);
+    }
+  });
 }
 
 $(function(){

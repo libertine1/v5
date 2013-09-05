@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1377791756', './wx/template/feed');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1378382649', './wx/template/feed');?><!DOCTYPE html>
 <html>
 <head>
 <meta charset = "utf-8" />
@@ -10,9 +10,9 @@
 <link rel = "stylesheet" type = "text/css" href = "template/<?=$bac['moblieclicknum']?>/css/main.css">
 <link rel="stylesheet" href="template/<?=$bac['moblieclicknum']?>/css/mobiscroll.custom-2.5.4.min.css">
 <?php } ?>
-<script src="js/jquery-v2.0.2.js"></script>
-     	<script src="js/mobiscroll.custom-2.5.4.min.js"></script>
-     	<script src="js/scrollbox.js"></script>
+<script src="template/js/jquery-v2.0.2.js"></script>
+     	<script src="template/js/mobiscroll.custom-2.5.4.min.js"></script>
+     	<script src="template/js/scrollbox.js"></script>
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     	<script src="template/js/mobiscroll.custom-2.5.4.min.js"></script>
      	<script src="template/js/js/jquery.query.js" type="text/javascript"></script>
@@ -21,10 +21,18 @@
 
      	<script id="detailTemplate" type="text/x-jquery-tmpl">
     	<li>
-<a href = "wx.php?do=detail&id={{= <?=$_GET['idtype']?>id}}&uid={{= uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&moblieclicknum=<?=$bac['moblieclicknum']?>">
-<div>
+    			<?=BLOCK_TAG_START?>if askid<?=BLOCK_TAG_END?>
+    			<a href = "wx.php?do=detail&id={{= id}}&uid={{= q_uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>">
+    			<?=BLOCK_TAG_START?>else<?=BLOCK_TAG_END?>
+<a href = "wx.php?do=detail&id={{= <?=$_GET['idtype']?>id}}&uid={{= uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>">
+<?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+<div class="listOuter">
+ <?=BLOCK_TAG_START?>if image1url<?=BLOCK_TAG_END?>
 <img src = "{{= image1url}}" />
+<?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+<div class="listInner">
 <h4>{{= subject}}</h4>
+</div>
 <span class = "info_span subtitle">{{= dateline}}</span>
 </div>
 </a>
@@ -41,7 +49,7 @@
 
 <?php } ?>
 </div>
-<ul class = "list">
+<ul class = "list mt55">
 <div id="detail-panel"></div>	
 </ul>
 <input type = "button"  onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());" value = "更多" class = "more_button"  />
@@ -56,6 +64,11 @@
     <?php if(is_array($zhongwei)) { foreach($zhongwei as $value) { ?>
                 <option value="wx.php?do=feed&uid=<?=$_GET['uid']?>&idtype=<?=$value['english']?>"><?=$value['subject']?></option>
                 <?php } } ?>
+                <?php if($zhongwei1) { ?>
+                <?php if(is_array($zhongwei1)) { foreach($zhongwei1 as $value1) { ?>
+                <option value="wx.php?do=feed&uid=<?=$_GET['uid']?>&idtype=<?=$value1['english']?>"><?=$value1['subject']?></option>
+                <?php } } ?>
+                <?php } ?>
 </select>
 </div>
 </body>

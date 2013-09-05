@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/home', '1377788506', './wx/template/home');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/home', '1378381865', './wx/template/home');?><!DOCTYPE html>
 <html>
 <head>
   	 	<meta charset="utf-8" />
@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class = "banner_pic"><img src = "http://v5.home3d.cn/home/<?=$home1['imageurl']?>"/></div>
-<div class = "banner_text">
-<span><?=$home1['subject']?><span>
+<div class = "banner_text" style="font-size:35px;">
+<span style="font-size: 20px !important;"><?=$home1['subject']?><span>
 </div>
 <div>
 <ul class = "menu">

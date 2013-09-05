@@ -8,9 +8,6 @@ if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
 if($_POST['fristsubmit']){
-	if(empty($_POST['button1'])&&empty($_POST['button2'])||empty($_POST['button2'])&&empty($_POST['button3'])||empty($_POST['button1'])&&empty($_POST['button3'])){
-		showmessage("至少填写2项一级菜单");
-	}
 	if(strlen($_POST['button1'])>16||strlen($_POST['button2'])>16||strlen($_POST['button3'])>16){
 	showmessage("一级菜单文字过长");
 }

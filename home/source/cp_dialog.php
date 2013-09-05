@@ -25,7 +25,7 @@ if($do == "delete"){
 		$question['askid']   = $askid;
 		$question['q_dateline'] = time();
 		inserttable("questions",$question);
-		showmessage("success");
+		showmessage("do_success","space.php?do=dialog");
 	}	
 	include_once template("cp_dialog");
 }
@@ -35,7 +35,7 @@ else{
 	$rid = $_POST['rid'];
 	$mes = $_POST['message'];
 	$dialogid = $_POST['dialogid'];
-	$dateline = $_SGLOBAL['timestamp'];
+	$dateline = time();
 	
 	$ip = getonlineip();
 	
@@ -44,7 +44,7 @@ else{
 	$dialogArr['rid'] = $rid;
 	$dialogArr['message'] = $mes;
 	$dialogArr['dialogid'] = $dialogid;
-	$dialogArr['dateline'] = $dateline;
+	$dialogArr['dialog_dateline'] = $dateline;
 	$dialogArr['ip'] = $ip;
 	
 	inserttable("dialog",$dialogArr);

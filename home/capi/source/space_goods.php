@@ -393,7 +393,7 @@ if($id) {
 		if($count) {
 			$query = $_SGLOBAL['db']->query("SELECT bf.message, bf.target_ids, bf.magiccolor, b.* FROM ".tname('goods')." b $f_index
 				LEFT JOIN ".tname('goodsfield')." bf ON bf.goodsid=b.goodsid
-				WHERE $wheresql
+				WHERE b.uid='$_REQUEST[uid]'
 				ORDER BY $ordersql DESC LIMIT $start,$perpage");
 		}
 	}
