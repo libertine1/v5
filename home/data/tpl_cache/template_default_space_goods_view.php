@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_goods_view|template/default/header|template/default/space_menu|template/default/space_comment_li|template/default/footer', '1378377637', 'template/default/space_goods_view');?><?php $_TPL['titles'] = array($goods['subject'], '商品管理'); ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_goods_view|template/default/header|template/default/space_menu|template/default/space_comment_li|template/default/footer', '1378536879', 'template/default/space_goods_view');?><?php $_TPL['titles'] = array($goods['subject'], '商品管理'); ?>
 <?php $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见'); ?>
 <?php if(empty($_SGLOBAL['inajax'])) { ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -204,10 +204,14 @@
                                
                              	<span class="grid_2" style= "font-size: 15px;">原价：<?=$goods['oldprice']?></span>
                              	<span class="grid_2" style= "font-size: 15px;">优惠价：<?=$goods['curprice']?></span>
-                               
+                               <?php if($goods['taobaourl']) { ?>
+                               	<a href = "javascript:(void);"class="book_btn grid_1" style="margin-right:20px;" onclick='gototaobao("<?=$goods['taobaourl']?>")'>购买</a>
+                               	<?php } ?>
+                               <a href = "space.php?do=goods&uid=<?=$space['uid']?>&cod=1" class="book_btn grid_1" >货到付款列表</a>
+                               	<?php if($goods['goodscod']) { ?>
 
-                               	<a href = "javascript:(void);"class="book_btn grid_1" onclick='gototaobao("<?=$goods['taobaourl']?>")'>购买</a>
-                               
+                               	<a href = "javascript:(void);"class="book_btn grid_1">货到付款开启</a>
+                               	<?php } ?>
                           </div>
                           
                            <div class="content_text_detail"style="overflow:hidden">

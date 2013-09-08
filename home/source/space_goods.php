@@ -13,7 +13,7 @@ $do=$_GET['do'];
 $query4 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('menuset')." WHERE english='$do'");
 $value4 = $_SGLOBAL['db']->fetch_array($query4);
 $wei1=$value4;
-
+$cod=$_GET['cod'];
 //判断是否购买
 $query5 = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf $f_index
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
@@ -224,7 +224,37 @@ if($id) {
 	$_TPL['css'] = 'goods';
 	include_once template("space_goods_view");
 
-} else {
+		
+		} elseif($cod){
+	$theurl="space.php?do=goods&cod=1";		
+	$perpage = 10;
+	$perpage = mob_perpage($perpage);
+	
+	$start = ($page-1)*$perpage;
+
+	//¼ì²é¿ªÊ¼Êý
+	ckstart($start, $perpage);
+	$list = array();
+	$count = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('goodscod')."  WHERE viewuid='$_SGLOBAL[supe_uid]'"),0);
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')."
+		WHERE viewuid='$_SGLOBAL[supe_uid]'
+		LIMIT $start,$perpage");
+	while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+		$query1 = $_SGLOBAL['db']->query("SELECT bf.message, bf.target_ids, bf.magiccolor, b.* FROM ".tname('goods')." b 
+				LEFT JOIN ".tname('goodsfield')." bf ON bf.goodsid=b.goodsid
+				WHERE b.goodsid='$value[gid]'");
+		$value1 = $_SGLOBAL['db']->fetch_array($query1);
+		
+		$value['more']=$value1;
+
+		realname_set($value['uid'], $value['username']);
+		$list[] = $value;
+	}
+	$multi = multi($count, $perpage, $page, $theurl);
+	include_once template("space_goods_cod");
+
+
+	}else {
 	//·ÖÒ³
 	$perpage = 10;
 	$perpage = mob_perpage($perpage);

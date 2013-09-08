@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/cp_profile|template/default/header|template/default/footer', '1378355044', 'template/default/cp_profile');?><?php if(empty($zhong1)) { ?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/cp_profile|template/default/header|template/default/footer', '1378531597', 'template/default/cp_profile');?><?php if(empty($zhong1)) { ?>
 <?php if(empty($_SGLOBAL['inajax'])) { ?>
 <!DOCTYPE html>
 <html>

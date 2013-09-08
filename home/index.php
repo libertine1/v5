@@ -77,7 +77,7 @@ if(empty($_SCONFIG['networkpublic'])) {
 	$_TPL['css'] = 'network';
 	include_once template("index");
 } else {
-	include_once(S_ROOT.'./source/network.php');
+	include_once(S_ROOT.'./source/home.php');
 }
 
 ?>

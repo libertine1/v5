@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/showmessage', '1378123116', './wx/template/showmessage');?><!DOCTYPE html> 
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/showmessage', '1378533993', './wx/template/showmessage');?><!DOCTYPE html> 
 <html> 
 <head> 
    <meta name="viewport" content="width=device-width,initial-scale=1" />   

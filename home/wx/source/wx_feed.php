@@ -101,7 +101,8 @@ require_once('Weixin.class.php');
 						'name' => $info['nick_name'],
 						'fakeid'=>$info['id'],
 						'namestatus' => '1',
-						'wxkey' => $_GET['wxkey']
+						'wxkey' => $_GET['wxkey'],
+						'fatheruid'=>$nextuid
 					);
 					updatetable('space', $setarr, array('uid'=>$uid ));
 				

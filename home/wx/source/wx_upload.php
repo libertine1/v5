@@ -6,12 +6,13 @@ if($_POST['buy']){
 	$viewuid=$_POST['viewuid'];
 	$number=$_POST['number'];
 	$uid=$_SGLOBAL['supe_uid'];
-	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$uid' AND viewuid='$viewuid'");
+	$gid=$_POST['gid'];
+	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$uid' and viewuid='$viewuid'");
 	$value = $_SGLOBAL['db']->fetch_array($query);
 	if($value){
-	updatetable("goodscod",array('username'=>$username,'tel'=>$tel,'place'=>$place,'number'=>$number),array('viewuid'=>$viewuid,'uid'=>$uid));
+	updatetable("goodscod",array('username'=>$username,'dateline'=>$_SGLOBAL['timestamp'], 'gid'=>$gid,'tel'=>$tel,'place'=>$place,'number'=>$number),array('viewuid'=>$viewuid,'uid'=>$uid));
 	}else{
-	inserttable("goodscod",array('username'=>$username,'tel'=>$tel,'number'=>$number,'place'=>$place,'viewuid'=>$viewuid,'uid'=>$uid));
+	inserttable("goodscod",array('username'=>$username,'dateline'=>$_SGLOBAL['timestamp'], 'gid'=>$gid,'tel'=>$tel,'number'=>$number,'place'=>$place,'viewuid'=>$viewuid,'uid'=>$uid));
 	}
 	echo '<script language="javascript">alert("提交成功,我们会尽快为你发货。");</script>';
 	echo '<script language="javascript">history.go(-1);</script>';

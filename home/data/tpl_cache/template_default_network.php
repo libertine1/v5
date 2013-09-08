@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/network|template/default/footer', '1378377560', 'template/default/network');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/network|template/default/footer', '1378652284', 'template/default/network');?><!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,8 +30,12 @@
     <div class="wrapper">
         <div class="navbar">
             <div class="navbar-inner container_36">
-                <a class="logo grid_1" href="#" style="background:none;"><img src="./template/default/image/logo.png"></a>
-                <a href="#" class="grid_5" style="float:right;color:#BDBEBF;padding-right:18px;">帮助</a>
+                <a class="logo grid_1"><img src="./template/default/image/logo.png"></a>
+                <a href="home.php" class="grid_2">首页</a>
+                <a href="buy.php" class="grid_2">套餐</a>
+                <a href="cases.php" class="grid_2">成功案例</a>
+                <a href="myhelp.php" class="grid_2">帮助</a>
+                <a href="network.php" class="grid_5" style="float:right;color:#BDBEBF;padding-right:18px;">登陆/注册</a>
              </div>
          </div>
          <!-- navbar end -->

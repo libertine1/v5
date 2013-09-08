@@ -334,3 +334,47 @@ body{
 	color: #BADE00 !important;
 }
 
+/*详情页面转发朋友圈*/
+.friend_wrapper {
+  width: 260px;
+  margin: 20px auto;
+}
+.friend_btn {
+  display: block;
+  background: #EEEEEE;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 20px;
+  float: left;
+  font-size: 13px;
+}
+.friend_btn img {
+  width: 24px;
+  height: 24px;
+  padding-top: 3px;
+  padding-left: 10px;
+  vertical-align: -7px;
+}
+.friend_btn:hover {
+  background: #ccc;
+  text-decoration: none;
+}
+.add_btn {
+  display: block;
+  background: #7AD0CD;
+  margin: 20px auto;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+}
+.add_btn span {
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+.add_btn:hover {
+  background: #4ABFBC;
+  text-decoration: none;
+}
+
+

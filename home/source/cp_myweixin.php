@@ -96,7 +96,7 @@ if($_POST['myweixinsubmit']){
 } 
 showmessage("添加成功","space.php?do=myweixin&view=me");
 }
-$query2 = $_SGLOBAL['db']->query("SELECT a.*, m.* FROM ".tname('appset')." a LEFT JOIN ".tname('menuset')." m ON a.num=m.menusetid where a.uid='$_SGLOBAL[supe_uid]'");
+$query2 = $_SGLOBAL['db']->query("SELECT a.*, m.* FROM ".tname('appset')." a LEFT JOIN ".tname('menuset')." m ON a.num=m.menusetid where a.uid='$_SGLOBAL[supe_uid]' and (m.style='1' || m.english='goods')");
 while($value2 = $_SGLOBAL['db']->fetch_array($query2)){
 	$list[]=$value2;
 }

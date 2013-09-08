@@ -29,10 +29,14 @@
                                
                              	<span class="grid_2" style= "font-size: 15px;">原价：$goods[oldprice]</span>
                              	<span class="grid_2" style= "font-size: 15px;">优惠价：$goods[curprice]</span>
+                               <!--{if $goods[taobaourl]}-->
+                               	<a href = "javascript:(void);"class="book_btn grid_1" style="margin-right:20px;" onclick='gototaobao("$goods[taobaourl]")'>购买</a>
+                               	<!--{/if}-->
                                
-
-                               	<a href = "javascript:(void);"class="book_btn grid_1" onclick='gototaobao("$goods[taobaourl]")'>购买</a>
-                               
+                               	<!--{if $goods[goodscod]}-->
+                               	<a href = "space.php?do=goods&uid=$space[uid]&cod=1" class="book_btn grid_1" style="margin-right:20px;">货到付款列表</a>
+                               	<a href = "javascript:(void);"class="book_btn grid_1">货到付款开启</a>
+                               	<!--{/if}-->
                           </div>
                           
                            <div class="content_text_detail"style="overflow:hidden">

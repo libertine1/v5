@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/goodscontent', '1378382979', './wx/template/goodscontent');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/goodscontent', '1378533017', './wx/template/goodscontent');?><!DOCTYPE html>
 <html>
     <head>
     	<title><?=$wei['subject']?></title>
@@ -166,6 +166,7 @@ function gototaobao(url){
 
 <input type="submit" class="buttonSubmit" value="提交">
 <input type="hidden" id="uid" name="uid" value="<?=$_GET['uid']?>"/>
+            <input type="hidden" id="gid" name="gid" value="<?=$_GET['id']?>"/>
 <input type="hidden" id="viewuid" name="viewuid" value="<?=$_GET['viewuid']?>"/>
             <input type="hidden" name="buy" value="1">
 </div> <!-- formContainer -->

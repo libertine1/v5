@@ -114,7 +114,8 @@ $rst = $_SGLOBAL['db']->query("SELECT * FROM ".tname('wxkey')." WHERE wxkey='$_G
 						'name' => $info['nick_name'],
 						'fakeid'=>$info['id'],
 						'namestatus' => '1',
-						'wxkey' => $_GET['wxkey']
+						'wxkey' => $_GET['wxkey'],
+						'fatheruid'=>$nextuid
 					);
 					updatetable('space', $setarr, array('uid'=>$uid ));
 				
@@ -177,7 +178,7 @@ if($_GET['type']=="job"){
 	$space = $_SGLOBAL['db']->fetch_array($query1);
 	require_once '../source/function_common.php';
 	$uidwxkey=getspace($uid);
-	$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$_SGLOBAL[supe_uid]'and viewuid='$uid'");
+	$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$_SGLOBAL[supe_uid]'");
 	$wei1 = $_SGLOBAL['db']->fetch_array($query1);
 	if($_GET['moblieclicknum']=="2"){
 		include_once template("./wx/template/$_GET[moblieclicknum]/goodscontent");

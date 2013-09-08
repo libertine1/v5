@@ -480,6 +480,8 @@ padding-top: 1px;
 }
 .title_down .grid_1:hover {
   background: url('./image/book_hover.png');
+  width:98px;
+
 }
 .title_down .grid_2 {
   color: #ff8181;

@@ -560,7 +560,7 @@ function cpComment(idtype, id, message){
 function ans(uid,rid,message,dialogid){
   $.ajax({
     
-    url:"http://localhost/new1/v5/home/capi/cp.php?ac=dialog",
+    url:"http://v5.home3d.cn/home/capi/cp.php?ac=dialog",
     type: "POST",
     data:{
       "uid":uid,

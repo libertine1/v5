@@ -190,10 +190,13 @@ class Weixin {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);  
 		$data = curl_exec($ch);      
 		curl_close($ch);
-		preg_match_all("/<img class=\"settingAvatar\" src=\"\/cgi-bin\/getheadimg\?fakeid=(.*)&/isU",trim($data),$matches);
-		preg_match_all('/<img[^>]*>/Ui', $matches[1], $match2);
+		/*$tmp=explode('userinfo : {',$data);
+		$tmp=explode("}",$tmp[1]);
+		$row=json_decode($tmp[0] , 1 );
+		print_r($row);*/
+		preg_match_all("/<img class=\"settingAvatar\" src=\"\/cgi-bin\/getheadimg\?fakeid=(.*)&r/isU",trim($data),$matches);
+		//preg_match_all('/<img[^>]*>/Ui', $matches[1], $match2);
 		//preg_match_all('/<img[ ]*src=["\']?([^"\' ><]+)/i',$matches[1],$matches1);  
-		//print_r($matches[1]);
 		$data = $matches[1];
 
 		$data = json_decode($data[0]);

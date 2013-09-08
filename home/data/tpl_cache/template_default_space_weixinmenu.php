@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1378377288', 'template/default/space_weixinmenu');?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1378458719', 'template/default/space_weixinmenu');?>
 <!DOCTYPE html>
 <html>
   <head>

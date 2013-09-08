@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1378382649', './wx/template/feed');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1378534015', './wx/template/feed');?><!DOCTYPE html>
 <html>
 <head>
 <meta charset = "utf-8" />

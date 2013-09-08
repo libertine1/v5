@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feedcontent', '1378382618', './wx/template/feedcontent');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feedcontent', '1378533999', './wx/template/feedcontent');?><!DOCTYPE html>
 <html>
     <head>
     <title><?=$wei['subject']?></title>
