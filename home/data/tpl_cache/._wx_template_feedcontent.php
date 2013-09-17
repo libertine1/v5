@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feedcontent', '1378533999', './wx/template/feedcontent');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feedcontent', '1379414302', './wx/template/feedcontent');?><!DOCTYPE html>
 <html>
     <head>
     <title><?=$wei['subject']?></title>
@@ -84,10 +84,10 @@
 </head>
 <body>
         <div id="bg" onclick="hideDiv();">
-            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;">
         </div>
         <div id="bg2" onclick="hideFriendDIv();">
-            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;">
         </div> 
 <div class = "article">
 <div id="detail-panel">
@@ -105,16 +105,8 @@
                        <img src="./template/img/friend_circle.png" alt="">
                        <span>分享到朋友圈</span>
              </a>
-             <h3 style="font-size:14px;margin-bottom:-10px;">安卓用户请点击：</h3>
-             <a id="" class="add_btn" href="weixin://addfriend/<?=$uidwxkey['wxkey']?>">
-                 <span>关注</span>
-             </a>
-             <h3 style="font-size:14px;margin-bottom:-10px;">iOS用户请订阅：</h3><br>
-             <?php if($uidwxkey['wxkey']) { ?>
-             <h3 style="font-size:14px;">1、搜索微信号：<?=$uidwxkey['wxkey']?></h3>
-             <?php } ?>
-              <?php if($uidwxkey['weixinname']) { ?>
-             <h3 style="font-size:14px;">2、关注微信公众账号：<?=$uidwxkey['weixinname']?></h3>
+               <?php if($uidwxkey['weixinname']) { ?>
+             <h3 style="font-size:14px;margin-bottom:-10px;">手机用户请关注微信公众账号：<?=$uidwxkey['weixinname']?></h3>
              <?php } ?>
          </div><!-- / -->
 </div>

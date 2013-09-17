@@ -1,4 +1,5 @@
 <?php
+
 $query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenu')."  WHERE uid='$_SGLOBAL[supe_uid]' order by fathernum ASC");
 while ($value = $_SGLOBAL['db']->fetch_array($query)) {
     $list[]=$value;
@@ -245,7 +246,7 @@ $menu_ary   = array(
         )
     );
 require 'creatmenu.php';
-$Weixin = new WeixinOp("wxf70f5db4dc7865cb" , "fa7c5f3da14bc810f6fd6d81d4057077");
+$Weixin = new WeixinOp("$space[appid]" , "$space[appsecret]");
 $weixinstatus=$Weixin->creatMenu($menu_ary);
 if($weixinstatus['errcode']=="0"){
     showmessage("菜单生成成功。");

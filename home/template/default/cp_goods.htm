@@ -88,11 +88,29 @@
                          <span class="select_title grid_1">淘宝链接&nbsp;&nbsp;:</span>
                            <input type="text" class="t_input" id="taobaourl" name="taobaourl" value="$goods[taobaourl]"  onblur="relatekw();" placeholder="注意输入有效的url" style = "margin-left:20px;"/>
                             </div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">查看购买者信息密码&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input" id="password" name="password" value="$goods[password]"  onblur="relatekw();" placeholder="查看购买者信息密码" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1" style = "margin-right:20px;">推送者&nbsp;&nbsp;:</span>
+                           <!-- <input type="text" class="t_input" id="taobaourl" name="taobaourl" value="$goods[taobaourl]"  onblur="relatekw();" placeholder="注意输入有效的url" style = "margin-left:20px;"/> -->
+                           <select  name="push" >
+                           <!--{if $goods[push]}-->
+                           <option value="$goods[fakeid]">$goods[name]</option>
+                           <!--{/if}-->
+                           <option value="0">未选择</option>
+                           <!--{loop $list $value}-->
+                           <option value="$value[fakeid]">$value[name]</option>
+                           <!--{/loop}-->
+                           </select>
+                            </div>
                             <div class="post_list container_12">
                          <span class="select_title grid_1" style="padding-right:20px;">货到付款功能&nbsp;&nbsp;:</span>
-                           开启:<input type="radio" class="t_input" id="goodscod" name="goodscod" value="1"   style = "margin-left:20px;padding-right:20px;"/>
-                            关闭:<input type="radio" class="t_input" id="goodscod"  CHECKED  name="goodscod" value="0"   style = "margin-left:20px;"/>
+                           开启:<input type="radio" class="t_input" id="goodscod" name="goodscod" value="1"   style = "margin-left:20px;padding-right:20px;" <!--{if $goods[goodscod]=='1'}-->CHECKED<!--{/if}-->/>
+                            关闭:<input type="radio" class="t_input" id="goodscod"    name="goodscod" value="0"   style = "margin-left:20px;" <!--{if $goods[goodscod]=='0'}-->CHECKED<!--{/if}-->/>
                             </div>
+                            
                    </div>
 				</td>
 			</tr>

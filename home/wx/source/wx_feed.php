@@ -126,10 +126,16 @@ require_once('Weixin.class.php');
  	$uid=$_GET['uid'];
 	$table=$_GET['idtype'];
 
-$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('menuset')."
-				WHERE english='$table'");
-$value1 = $_SGLOBAL['db']->fetch_array($query1);
-$appname=$value1['subject'];
+$query1 = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf 
+				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
+				WHERE b.english='$table' and bf.uid='$uid'");
+			$value1 = $_SGLOBAL['db']->fetch_array($query1);
+			if($value1['newname']){
+			$appname=$value1['newname'];
+			}else{
+			$appname=$value1['subject'];
+
+			}
 	
 $zhong = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf 
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
@@ -155,7 +161,14 @@ while ($wei1 = $_SGLOBAL['db']->fetch_array($zhong1)) {
 }	
 	if($table=="dialog"){
 		$zhongwei2=="1";
+		$abc = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE uid='$uid'");
+		$bac = $_SGLOBAL['db']->fetch_array($abc);
+		if($bac['moblieclicknum']=="2"){
+		include_once template("./wx/template/$bac[moblieclicknum]/dialog");
+		}else{
+		include_once template("./wx/template/dialog");
 	}
+	}else{
 	$abc = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." WHERE uid='$uid'");
 	$bac = $_SGLOBAL['db']->fetch_array($abc);
 	if($bac['moblieclicknum']=="2"){
@@ -163,5 +176,5 @@ while ($wei1 = $_SGLOBAL['db']->fetch_array($zhong1)) {
 	}else{
 	include_once template("./wx/template/feed");
 }
-
+}
 ?>

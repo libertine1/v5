@@ -100,7 +100,7 @@ $_SCONFIG=Array
 			'click' => 1
 			)
 		),
-	'cronnextrun' => 1378652700,
+	'cronnextrun' => 1379420700,
 	'my_status' => '0',
 	'uniqueemail' => 1,
 	'updatestat' => 1,

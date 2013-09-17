@@ -21,7 +21,7 @@
 	}else{	
 
 	$token[0]=trim($token[0]);
-	updatetable("space", array('fakeid'=>$info,'weixinname'=>$usermore['NickName'], 'wxkey'=>$token[0],'weixinusername'=>$username,'weixinpassword'=>$password),array('uid'=>$_SGLOBAL['supe_uid']));
+	updatetable("space", array('fakeid'=>$info,'weixinname'=>$usermore['NickName'],'weixinhao'=>$usermore['Username'], 'wxkey'=>$token[0],'weixinusername'=>$username,'weixinpassword'=>$password),array('uid'=>$_SGLOBAL['supe_uid']));
 	showmessage("提交成功","space.php?do=feed");
 	}
 /*	$username=$_POST['username'];

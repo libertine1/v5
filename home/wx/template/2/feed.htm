@@ -96,9 +96,14 @@
 
             <select name="navigation" id="nav" class="f-dd" onchange="top.location=this.value;" >
                 <option value="wx.php?do=home&uid=$_GET[uid]">首页</option>
-              <!--{loop $zhongwei $value}-->
+			    <!--{loop $zhongwei $value}-->
                 <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]">$value[subject]</option>
                 <!--{/loop}-->
+                <!--{if $zhongwei1}-->
+                <!--{loop $zhongwei1 $value1}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]">$value1[subject]</option>
+                <!--{/loop}-->
+                <!--{/if}-->
             </select>
 
 

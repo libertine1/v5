@@ -451,12 +451,15 @@ function getDetail(idtype, id, uid){
        
       success: function( data ) {
         /* Get the movies array from the data */
-        if(data.code==0){
-          data=data.data;
-          
-        data.goods.dateline = date('Y-m-d H:i',data.goods.dateline);    
 
-          $("#detailTemplate").tmpl(data ).appendTo('#detail-panel');
+        if(data.code==0){
+           //alert(""+uid+"");
+          data=data.data.goodscod;
+           for (var i = 0, len = data.length; i < len; ++i) {
+              data[i].dateline = date('Y-m-d H:i',data[i].dateline);
+            }
+    
+          $("#detailTemplate").tmpl(data).appendTo('#detail-panel');
         }else{
         alert(data.msg);
         }
@@ -569,11 +572,11 @@ function ans(uid,rid,message,dialogid){
       "dialogid":dialogid
     },
     success:function(data){
-      //console.log(data);
+      console.log(data);
       window.location.reload();
     },
     error:function(data){
-      //console.log(data);
+      console.log(data);
     }
   });
 }

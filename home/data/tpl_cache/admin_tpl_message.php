@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('admin/tpl/message|admin/tpl/header|admin/tpl/footer|template/default/header|template/default/footer', '1377833361', 'admin/tpl/message');?><?php $_TPL['menunames'] = array(
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('admin/tpl/message|admin/tpl/header|admin/tpl/footer|template/default/header|template/default/footer', '1379414069', 'admin/tpl/message');?><?php $_TPL['menunames'] = array(
 		'index' => '管理首页',
 		'config' => '站点设置',
 		'privacy' => '隐私设置',
@@ -162,7 +162,7 @@
 <div class="side_bar" >
               <div class="side_bar_inner" >
                     <ul>
-                        <li class="side_header"><span class="title">基本组件</span><a href="space.php?do=menuset&view=me" class="manage_btn">管理</a></li>
+                        <li class="side_header"><span class="title">基本组件</span><!-- <a href="space.php?do=menuset&view=me" class="manage_btn">管理</a -->></li>
   						
                         <?php if(is_array($zhongwei)) { foreach($zhongwei as $value) { ?>
  <?php if($value['english']==$_GET['do']||$value['english']==$_GET['ac']) { ?><li class="actived"><?php } else { ?><li class="side_option"><?php } ?><a href="<?=$value['url']?>"><?=$value['subject']?></a></li>
@@ -170,7 +170,7 @@
 
                        <!-- <li class="side_option actived"><a href="">企业介绍</a></li>-->
                        
-                        <li class="side_header"><span class="title">高级组件</span><a href="space.php?do=menuset&view=me" class="manage_btn">管理</a></li>
+                        <li class="side_header"><span class="title">高级组件</span><!-- <a href="space.php?do=menuset&view=me" class="manage_btn">管理</a> --></li>
                         <?php if(is_array($zhongwei1)) { foreach($zhongwei1 as $value) { ?>
  <?php if($value['english']==$_GET['do']||$value['english']==$_GET['ac']) { ?><li class="actived"><?php } else { ?><li class="side_option"><?php } ?><a href="<?=$value['url']?>"><?=$value['subject']?></a></li>
 <?php } } ?>
@@ -250,86 +250,103 @@
 </div>
 
 
+    <link rel="stylesheet" href="./template/default/bottomWrapper.css" />
    <?php if(empty($_SGLOBAL['inajax'])) { ?>
-<?php if(empty($_TPL['nosidebar'])) { ?>
-<?php if($_SGLOBAL['ad']['contentbottom']) { ?><br style="line-height:0;clear:both;"/><div id="ad_contentbottom"><?php adshow('contentbottom'); ?></div><?php } ?>
-</div>
+  <?php if(empty($_TPL['nosidebar'])) { ?>
+    <?php if($_SGLOBAL['ad']['contentbottom']) { ?><br style="line-height:0;clear:both;"/><div id="ad_contentbottom"><?php adshow('contentbottom'); ?></div><?php } ?>
+    </div>
 
-<!--/mainarea-->
-<?php if($zhong1) { ?>
-<div id="bottom"></div>
-<?php } ?>
-</div>
-<!--/main-->
-<?php } ?>
+    <!--/mainarea-->
+    <?php if($zhong1) { ?>
+    <div id="bottom"></div>
+    <?php } ?>
+  </div>
+  <!--/main-->
+  <?php } ?>
     </div>
     </div>
       <div id="backtop">
-    	<a href="">
-    		<img src="./template/default/image/back_top.png">
-    	</a>
+      <a href="">
+        <img src="./template/default/image/back_top.png">
+      </a>
     </div>
         </div>
-<div class="footer">
-
-        <div class="footer_map container_12">
-           <ul class="grid_3">
-                <li class="map_title"><img src="./template/default/image/ff.png">使用帮助:</li>
-                <li><a href="">开通流程</a></li>
-                <li><a href="">管理员手册</a></li>
-                <li><a href="">用户手册</a></li>
-           </ul>
-
-            <ul class="grid_3">
-                <li class="map_title"><img src="./template/default/image/ff.png">投诉与建议:</li>
-                <li><a href="">在线客服</a></li>
-                <li><a href="">留言板</a></li>
-           </ul>
-
-            <ul class="grid_3">
-                <li class="map_title"><img src="./template/default/image/ff.png"><span>合作:</span></li>
-                <li><a href="">品牌企业合作</a></li>
-                <li><a href="">媒体合作</a></li>
-                <li><a href="">收费细节</a></li>
-           </ul>
-
-            <ul class="grid_3">
-                <li class="map_title"><img src="./template/default/image/ff.png">关于我们:</li>
-                <li><a href="">企业介绍</a></li>
-                <li><a href="">联系方式</a></li>
-                <li><a href="">人才招聘</a></li>
-           </ul>
-          
-        </div><!-- map end -->
-        <div class="footer_info">
-             版权所有：广州市宏门网络科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ICP:&nbsp;&nbsp; 粤ICP备08132436号
-            
 
 
-    </div>
+   <!-- 修复ie6透明png的bug -->
+   <div class="footer">
+        <div class="bottomWrapper">
+      <div class="contactUs">
+        <ul>
+          <li class="listTitle">
+            <img src="./template/default/image/img/arrow_circle_right.png" alt="" class="pngFix" />
+            使用帮助：
+          </li>
+          <a href="#"><li class="listItem">开通流程</li></a>
+          <a href="#"><li class="listItem">管理员手册</li></a>
+          <a href="#"><li class="listItem">用户手册</li></a>
+        </ul>
 
+        <ul>
+          <li class="listTitle">
+            <img src="./template/default/image/img/arrow_circle_right.png" alt="" class="pngFix" />
+            投诉与建议：
+          </li>
+          <a href="#"><li class="listItem">在线客服</li></a>
+          <a href="#"><li class="listItem">留言板</li></a>
+          <a href="#"><li class="listItem">用户手册</li></a>
+        </ul>
+
+        <ul>
+          <li class="listTitle">
+            <img src="./template/default/image/img/arrow_circle_right.png" alt="" class="pngFix" />
+            合作：
+          </li>
+          <a href="#"><li class="listItem">品牌企业合作</li></a>
+          <a href="#"><li class="listItem">媒体合作</li></a>
+          <a href="#"><li class="listItem">收费细节</li></a>
+        </ul>
+
+        <ul class="last">
+          <li class="listTitle">
+            <img src="./template/default/image/img/arrow_circle_right.png" alt="" class="pngFix" />
+            关于我们：
+          </li>
+          <a href="#"><li class="listItem">企业介绍</li></a>
+          <a href="#"><li class="listItem">联系方式</li></a>
+          <a href="#"><li class="listItem">人才招聘</li></a>
+        </ul>
+
+        <img src="./template/default/image/img/QRcode.png" alt="" id="QRcode" />
+      </div> <!-- contact_us --> 
+
+      <div class="declaration">
+        <span class="copyright">版权所有：广州市树袋熊网络科技有限公司</span>
+        <span class="ICP">ICP：粤ICP备08132436号</span>
+      </div> <!-- declaration --> 
+    </div> <!-- bottom_wrapper --> 
 </div>
 <!--/wrap-->
 
     <!--<script src="js/bootstrap.min.js"></script>-->
 <?php if($_SGLOBAL['appmenu']) { ?>
 <ul id="ucappmenu_menu" class="dropmenu_drop" style="display:none;">
-<li><a href="<?=$_SGLOBAL['appmenu']['url']?>" title="<?=$_SGLOBAL['appmenu']['name']?>" target="_blank"><?=$_SGLOBAL['appmenu']['name']?></a></li>
-<?php if(is_array($_SGLOBAL['appmenus'])) { foreach($_SGLOBAL['appmenus'] as $value) { ?>
-<li><a href="<?=$value['url']?>" title="<?=$value['name']?>" target="_blank"><?=$value['name']?></a></li>
-<?php } } ?>
+  <li><a href="<?=$_SGLOBAL['appmenu']['url']?>" title="<?=$_SGLOBAL['appmenu']['name']?>" target="_blank"><?=$_SGLOBAL['appmenu']['name']?></a></li>
+  <?php if(is_array($_SGLOBAL['appmenus'])) { foreach($_SGLOBAL['appmenus'] as $value) { ?>
+  <li><a href="<?=$value['url']?>" title="<?=$value['name']?>" target="_blank"><?=$value['name']?></a></li>
+  <?php } } ?>
 </ul>
 <?php } ?>
 
 <?php if($_SGLOBAL['supe_uid']) { ?>
 <ul id="membernotemenu_menu" class="dropmenu_drop" style="display:none;">
-<?php $member = $_SGLOBAL['member']; ?>
-<?php if($member['notenum']) { ?><li><img src="image/icon/notice.gif" width="16" alt="" /> <a href="space.php?do=notice"><strong><?=$member['notenum']?></strong> 个新通知</a></li><?php } ?>
-<?php if($member['pokenum']) { ?><li><img src="image/icon/poke.gif" alt="" /> <a href="cp.php?ac=poke"><strong><?=$member['pokenum']?></strong> 个新招呼</a></li><?php } ?>
-<?php if($member['addfriendnum']) { ?><li><img src="image/icon/friend.gif" alt="" /> <a href="cp.php?ac=friend&op=request"><strong><?=$member['addfriendnum']?></strong> 个好友请求</a></li><?php } ?>
-<?php if($member['mtaginvitenum']) { ?><li><img src="image/icon/mtag.gif" alt="" /> <a href="cp.php?ac=mtag&op=mtaginvite"><strong><?=$member['mtaginvitenum']?></strong> 个群组邀请</a></li><?php } ?>
-<?php if($member['eventinvitenum']) { ?><li><img src="image/icon/event.gif" alt="" /> <a href="cp.php?ac=event&op=eventinvite"><strong><?=$member['eventinvitenum']?></strong> 个活动邀请</a></li><?php } ?>
-<?php if($member['myinvitenum']) { ?><li><img src="image/icon/userapp.gif" alt="" /> <a href="space.php?do=notice&view=userapp"><strong><?=$member['myinvitenum']?></strong> 个应用消息</a></li><?php } ?>
+  <?php $member = $_SGLOBAL['member']; ?>
+  <?php if($member['notenum']) { ?><li><img src="image/icon/notice.gif" width="16" alt="" /> <a href="space.php?do=notice"><strong><?=$member['notenum']?></strong> 个新通知</a></li><?php } ?>
+  <?php if($member['pokenum']) { ?><li><img src="image/icon/poke.gif" alt="" /> <a href="cp.php?ac=poke"><strong><?=$member['pokenum']?></strong> 个新招呼</a></li><?php } ?>
+  <?php if($member['addfriendnum']) { ?><li><img src="image/icon/friend.gif" alt="" /> <a href="cp.php?ac=friend&op=request"><strong><?=$member['addfriendnum']?></strong> 个好友请求</a></li><?php } ?>
+  <?php if($member['mtaginvitenum']) { ?><li><img src="image/icon/mtag.gif" alt="" /> <a href="cp.php?ac=mtag&op=mtaginvite"><strong><?=$member['mtaginvitenum']?></strong> 个群组邀请</a></li><?php } ?>
+  <?php if($member['eventinvitenum']) { ?><li><img src="image/icon/event.gif" alt="" /> <a href="cp.php?ac=event&op=eventinvite"><strong><?=$member['eventinvitenum']?></strong> 个活动邀请</a></li><?php } ?>
+  <?php if($member['myinvitenum']) { ?><li><img src="image/icon/userapp.gif" alt="" /> <a href="space.php?do=notice&view=userapp"><strong><?=$member['myinvitenum']?></strong> 个应用消息</a></li><?php } ?>
 </ul>
 <?php } ?>
 
@@ -348,17 +365,17 @@
 <?php if($_SGLOBAL['ad']['couplet']) { ?>
 <script language="javascript" type="text/javascript" src="source/script_couplet.js"></script>
 <div id="uch_couplet" style="z-index: 10; position: absolute; display:none">
-<div id="couplet_left" style="position: absolute; left: 2px; top: 60px; overflow: hidden;">
-<div style="position: relative; top: 25px; margin:0.5em;" onMouseOver="this.style.cursor='hand'" onClick="closeBanner('uch_couplet');"><img src="image/advclose.gif"></div>
-<?php adshow('couplet'); ?>
-</div>
-<div id="couplet_rigth" style="position: absolute; right: 2px; top: 60px; overflow: hidden;">
-<div style="position: relative; top: 25px; margin:0.5em;" onMouseOver="this.style.cursor='hand'" onClick="closeBanner('uch_couplet');"><img src="image/advclose.gif"></div>
-<?php adshow('couplet'); ?>
-</div>
-<script type="text/javascript">
-lsfloatdiv('uch_couplet', 0, 0, '', 0).floatIt();
-</script>
+  <div id="couplet_left" style="position: absolute; left: 2px; top: 60px; overflow: hidden;">
+    <div style="position: relative; top: 25px; margin:0.5em;" onMouseOver="this.style.cursor='hand'" onClick="closeBanner('uch_couplet');"><img src="image/advclose.gif"></div>
+    <?php adshow('couplet'); ?>
+  </div>
+  <div id="couplet_rigth" style="position: absolute; right: 2px; top: 60px; overflow: hidden;">
+    <div style="position: relative; top: 25px; margin:0.5em;" onMouseOver="this.style.cursor='hand'" onClick="closeBanner('uch_couplet');"><img src="image/advclose.gif"></div>
+    <?php adshow('couplet'); ?>
+  </div>
+  <script type="text/javascript">
+    lsfloatdiv('uch_couplet', 0, 0, '', 0).floatIt();
+  </script>
 </div>
 <?php } ?>
 <?php if($_SCOOKIE['reward_log']) { ?>

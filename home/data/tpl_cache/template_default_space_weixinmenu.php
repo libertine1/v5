@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1378458719', 'template/default/space_weixinmenu');?>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('template/default/space_weixinmenu|template/default/header|template/default/footer|template/default/footer', '1378834641', 'template/default/space_weixinmenu');?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -413,6 +413,7 @@ $(document).ready(function() {
                         <li>顶部是初次使用的推送文章</li>
                         <li> 底部是微信一级菜单和二级菜单, 一级菜单填写完成后才能继续二级菜单填写</li>
                         <li>微信自定义菜单填写完成后, 您的公众帐号出现一样的自定义内容</li>
+                        <li>1232</li>
                       </ol>
                      </div>
                           <input type="submit" class="btn grid_2">
@@ -707,15 +708,7 @@ showreward();
         })
     </script>
      <?php } else { ?>
-     <?php if(empty($list['0']['sub_function1'])&&empty($list['1']['sub_function1'])&&empty($list['0']['sub_function2'])) { ?>
-     <script type="text/javascript">
-     $(document).ready(function(){
-      $('#tip').attr("style", "display:block;");
-     $('#tip').modal();
-     preventDefault();
-   })
-     </script>
-     <?php } ?>
+
                           <div class="content_detail_wrapper">
                    <form method="post" action="space.php?do=weixinmenu" onkeydown="if(event.keyCode==13){return false;}" enctype="multipart/form-data">
                      <div class="left_weixin">
@@ -1148,16 +1141,7 @@ showreward();
             <div id="what"></div>
             </form>
             </div>
-            <div id="tip">
-
-            <br/>
-           <h3 style="font-size:20px;color:#44B1BA;text-align:center;margin:0 auto;line-height:40px;">  
-         请选择相应自定义菜单的相应功能。
-         </h3>
-         <br/>
-  
-            </div>
-
+           
 
 
            

@@ -272,7 +272,7 @@ $(document).ready(function(){
   var idtype=$.query.get('idtype');
 	$.ajax({
 			dataType: "jsonp",
-			url: "http://v5.home3d.cn/home/capi/space.php?do="+idtype+"&uid="+uid+"&page=1&perpage=4",
+			url: "http://v5.home3d.cn/home/capi/space.php?do="+idtype+"&uid="+uid+"&page=1&perpage=10",
 		   
 			success: function( data ) {
 			  /* Get the movies array from the data */
@@ -291,25 +291,45 @@ $(document).ready(function(){
 }
   if(""+idtype+""=="industry"){
           data=data.data.industry;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
   if(""+idtype+""=="cases"){
           data=data.data.cases;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
  if(""+idtype+""=="branch"){
           data=data.data.branch;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
 if(""+idtype+""=="job"){
           data=data.data.job;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
 if(""+idtype+""=="talk"){
           data=data.data.talk;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
 if(""+idtype+""=="goods"){
           data=data.data.goods;
+           if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
 if(""+idtype+"" == "dialog"){
         data = data.data.list;
-        
+         if (data.length<=0){
+            $(".more_button").appendto("<div class='more_button'>亲，没有了哦！</div>");
+          }
 }
           
           //oid1=data.quiz.options[0].oid;
@@ -317,6 +337,7 @@ if(""+idtype+"" == "dialog"){
 					//data.message = html_entity_decode(data.message);
             for (var i = 0, len = data.length; i < len; ++i) {
           data[i].dateline = date('Y-m-d H:i',data[i].dateline);
+          data[i].q_dateline = date('Y-m-d H:i',data[i].q_dateline);
           if(data[i].image1url){
              data[i].image1url ="../"+data[i].image1url+"";
           }else{

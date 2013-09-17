@@ -31,7 +31,7 @@ if($_SCONFIG['allowrewrite'] && isset($_GET['rewrite'])) {
 //ÔÊÐí¶¯×÷
 $dos = array('feed', 'doing', 'mood', 'blog', 'album', 'thread', 'mtag', 'friend', 'wall', 'tag', 'notice', 'share', 'topic', 'home', 'pm', 'event', 'poll', 'top', 'info', 'videophoto',
 	'introduce','product','development','industry','text','cases','branch','job','talk','menuset','check','showmenuset','wei','orderid','recommend','moblie','goods','goweixin','book','newname','myweixin','communicate','weixinmenu',
-	'highmenuset','dialog');
+	'highmenuset','dialog','ajax','showmenuset1');
 
 //»ñÈ¡±äÁ¿
 $isinvite = 0;
@@ -168,7 +168,9 @@ while ($wei1 = $_SGLOBAL['db']->fetch_array($zhong1)) {
 }
 
 
-
+	if(empty($_SGLOBAL['supe_uid'])){
+		showmessage("请登录后查看","network.php");
+	}
 //隐藏侧边栏
 	$query4 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('appset')." WHERE uid='$_SGLOBAL[supe_uid]' and appstatus='1'");
 	$value4 = $_SGLOBAL['db']->fetch_array($query4);

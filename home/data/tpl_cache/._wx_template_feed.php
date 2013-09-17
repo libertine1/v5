@@ -1,4 +1,4 @@
-<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1378534015', './wx/template/feed');?><!DOCTYPE html>
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/feed', '1379414071', './wx/template/feed');?><!DOCTYPE html>
 <html>
 <head>
 <meta charset = "utf-8" />
@@ -18,13 +18,31 @@
      	<script src="template/js/js/jquery.query.js" type="text/javascript"></script>
      	<script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
      	<script type="text/javascript" src="template/js/feed.js"></script><!-- 时间选择插件 -->
-
+     	<?php if($bac['moblieclicknum']=='3'||$bac['moblieclicknum']=='4' ||$bac['moblieclicknum']=='5'||$bac['moblieclicknum']=='6') { ?>
      	<script id="detailTemplate" type="text/x-jquery-tmpl">
     	<li>
     			<?=BLOCK_TAG_START?>if askid<?=BLOCK_TAG_END?>
-    			<a href = "wx.php?do=detail&id={{= id}}&uid={{= q_uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>">
+    			<a href = "wx.php?do=detail&id={{= id}}&uid={{= q_uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>&cheak='1'">
     			<?=BLOCK_TAG_START?>else<?=BLOCK_TAG_END?>
-<a href = "wx.php?do=detail&id={{= <?=$_GET['idtype']?>id}}&uid={{= uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>">
+<a href = "wx.php?do=detail&id={{= <?=$_GET['idtype']?>id}}&uid={{= uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>&cheak='1'">
+<?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+<div>
+ <?=BLOCK_TAG_START?>if image1url<?=BLOCK_TAG_END?>
+<img src = "{{= image1url}}" />
+<?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+<h4>{{= subject}}</h4>
+<span class = "info_span subtitle">{{= dateline}}</span>
+</div>
+</a>
+</li>
+</script>
+     	<?php } else { ?>
+     	<script id="detailTemplate" type="text/x-jquery-tmpl">
+    	<li>
+    			<?=BLOCK_TAG_START?>if askid<?=BLOCK_TAG_END?>
+    			<a href = "wx.php?do=detail&id={{= id}}&uid={{= q_uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>&cheak='1'">
+    			<?=BLOCK_TAG_START?>else<?=BLOCK_TAG_END?>
+<a href = "wx.php?do=detail&id={{= <?=$_GET['idtype']?>id}}&uid={{= uid}}&idtype=<?=$_GET['idtype']?>id&type=<?=$_GET['idtype']?>&viewuid=<?=$uid?>&wxkey=<?=$_GET['wxkey']?>&moblieclicknum=<?=$bac['moblieclicknum']?>&cheak='1'">
 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
 <div class="listOuter">
  <?=BLOCK_TAG_START?>if image1url<?=BLOCK_TAG_END?>
@@ -38,6 +56,7 @@
 </a>
 </li>
 </script>
+<?php } ?>
 </head>
 <body> 
 <div class = "navigation">
@@ -57,7 +76,7 @@
             <input type="hidden" id="idtype" name="idtype" value="<?=$_GET['idtype']?>"/>
             <input type="hidden" id="uid" name="uid" value="<?=$_GET['uid']?>"/>
             <input type="hidden" id="page" name="page" value="2"/>
-            <input type="hidden" id="perpage" name="perpage" value="4"/>
+            <input type="hidden" id="perpage" name="perpage" value="10"/>
 <div style = "display: none;">
 <select name="" id="demo" class="f-dd">
 <option value="wx.php?do=home&uid=<?=$_GET['uid']?>">首页</option>

@@ -7,7 +7,11 @@
 if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
+
 if($_POST['fristsubmit']){
+		if(empty($_POST['button1'])||empty($_POST['button2'])||empty($_POST['button3'])){
+		showmessage("请先填好三个一级菜单在做其他操作！");
+	}
 	if(strlen($_POST['button1'])>16||strlen($_POST['button2'])>16||strlen($_POST['button3'])>16){
 	showmessage("一级菜单文字过长");
 }
@@ -23,7 +27,7 @@ if($_POST['fristsubmit']){
   		$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenutop')." where uid='$_SGLOBAL[supe_uid]' and type='image'");
 		$value = $_SGLOBAL['db']->fetch_array($query);
 					if($value){
-  					updatetable("weixinmenutop", array('name'=>$_POST['focusname']), array('uid'=>$_SGLOBAL['supe_uid']));
+  					updatetable("weixinmenutop", array('name'=>$_POST['focusname']), array('uid'=>$_SGLOBAL['supe_uid'],'type'=>'image'));
   					}else{
   					inserttable("weixinmenutop",array('name'=>$_POST['focusname'],'uid'=>$_SGLOBAL['supe_uid'],'type'=>'image'));	
   					}
@@ -38,13 +42,7 @@ if($_POST['fristsubmit']){
 		'sub_button4'=> $_POST['1sub_button4'],
 		'sub_button5'=> $_POST['1sub_button5'],
 		'fathernum'  => '1',
-		'uid'        => $_SGLOBAL['supe_uid'],
-		'function'  => $_POST['function1'],
-		'sub_function1'=> $_POST['1sub_function1'],
-		'sub_function2'=> $_POST['1sub_function2'],
-		'sub_function3'=> $_POST['1sub_function3'],
-		'sub_function4'=> $_POST['1sub_function4'],
-		'sub_function5'=> $_POST['1sub_function5']
+		'uid'        => $_SGLOBAL['supe_uid']
 
 	);	
 	inserttable("weixinmenu",$dataarr1);
@@ -59,13 +57,7 @@ if($_POST['fristsubmit']){
 		'sub_button4'=> $_POST['2sub_button4'],
 		'sub_button5'=> $_POST['2sub_button5'],
 		'fathernum'  => '2',
-		'uid'        => $_SGLOBAL['supe_uid'],
-		'function'  => $_POST['function2'],
-		'sub_function1'=> $_POST['2sub_function1'],
-		'sub_function2'=> $_POST['2sub_function2'],
-		'sub_function3'=> $_POST['2sub_function3'],
-		'sub_function4'=> $_POST['2sub_function4'],
-		'sub_function5'=> $_POST['2sub_function5']
+		'uid'        => $_SGLOBAL['supe_uid']
 	);	
 	inserttable("weixinmenu",$dataarr2);
 	}
@@ -79,13 +71,8 @@ if($_POST['fristsubmit']){
 		'sub_button4'=> $_POST['3sub_button4'],
 		'sub_button5'=> $_POST['3sub_button5'],
 		'fathernum'  => '3',
-		'uid'        => $_SGLOBAL['supe_uid'],
-		'function'  => $_POST['function3'],
-		'sub_function1'=> $_POST['3sub_function1'],
-		'sub_function2'=> $_POST['3sub_function2'],
-		'sub_function3'=> $_POST['3sub_function3'],
-		'sub_function4'=> $_POST['3sub_function4'],
-		'sub_function5'=> $_POST['3sub_function5']
+		'uid'        => $_SGLOBAL['supe_uid']
+
 	);	
 	inserttable("weixinmenu",$dataarr3);
 	}
@@ -94,6 +81,10 @@ if($_POST['fristsubmit']){
 
 if($_POST['functionweixin']){
 	$function=$_POST['province'].".".$_POST['city'];
+	if(empty($_POST['province'])){
+		showmessage("推送信息不能全为空");
+	}
+	if($function){
 	$query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenutop')."  WHERE uid='$_SGLOBAL[supe_uid]' and type='$_POST[type]'");
 	$value = $_SGLOBAL['db']->fetch_array($query);
 	if($value){
@@ -104,6 +95,18 @@ if($_POST['functionweixin']){
 	}
 	}else{
 		inserttable("weixinmenutop",array('number'=>$function,'uid'=>$_SGLOBAL['supe_uid'],'type'=>"$_POST[type]"));
+	}
+	}
+}
+
+if($_POST['appweixin']){
+	$appid=$_POST['appid'];
+	$appsecret=$_POST['appsecret'];
+	if($appid && $appsecret){
+		updatetable("space",array('appid'=>$appid,'appsecret'=>$appsecret),array('uid'=>$_SGLOBAL['supe_uid']));
+		showmessage("发布成功","space.php?do=weixinmenu");
+	}else{
+		showmessage("appid和appsecret不能为空","space.php?do=weixinmenu");
 	}
 }
 
@@ -128,8 +131,7 @@ if($_POST['secondsubmit']){
 		'sub_button2'=> $_POST['1sub_button2'],
 		'sub_button3'=> $_POST['1sub_button3'],
 		'sub_button4'=> $_POST['1sub_button4'],
-		'sub_button5'=> $_POST['1sub_button5'],
-		'function'  => $_POST['function1']
+		'sub_button5'=> $_POST['1sub_button5']
 	);	
 	//中间菜单情况
 	$dataarr2=array(
@@ -138,8 +140,7 @@ if($_POST['secondsubmit']){
 		'sub_button2'=> $_POST['2sub_button2'],
 		'sub_button3'=> $_POST['2sub_button3'],
 		'sub_button4'=> $_POST['2sub_button4'],
-		'sub_button5'=> $_POST['2sub_button5'],
-		'function'  => $_POST['function2']
+		'sub_button5'=> $_POST['2sub_button5']
 	);	
 	//右侧菜单情况
 	$dataarr3=array(
@@ -149,13 +150,60 @@ if($_POST['secondsubmit']){
 		'sub_button3'=> $_POST['3sub_button3'],
 		'sub_button4'=> $_POST['3sub_button4'],
 		'sub_button5'=> $_POST['3sub_button5'],
-		'function'  => $_POST['function3']
 
-	);	
+
+	);
+	if(empty($_POST['1sub_button1'])){
+		updatetable("weixinmenu",array('sub_function1'=>""),array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['1sub_button2'])){
+		updatetable("weixinmenu",array('sub_function2'=>""),array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['1sub_button3'])){
+		updatetable("weixinmenu",array('sub_function3'=>""),array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['1sub_button4'])){
+		updatetable("weixinmenu",array('sub_function4'=>""),array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['1sub_button5'])){
+		updatetable("weixinmenu",array('sub_function5'=>""),array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['2sub_button1'])){
+		updatetable("weixinmenu",array('sub_function1'=>""),array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['2sub_button2'])){
+		updatetable("weixinmenu",array('sub_function2'=>""),array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['2sub_button3'])){
+		updatetable("weixinmenu",array('sub_function3'=>""),array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['2sub_button4'])){
+		updatetable("weixinmenu",array('sub_function4'=>""),array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['2sub_button5'])){
+		updatetable("weixinmenu",array('sub_function5'=>""),array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['3sub_button1'])){
+		updatetable("weixinmenu",array('sub_function1'=>""),array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['3sub_button2'])){
+		updatetable("weixinmenu",array('sub_function2'=>""),array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['3sub_button3'])){
+		updatetable("weixinmenu",array('sub_function3'=>""),array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['3sub_button4'])){
+		updatetable("weixinmenu",array('sub_function4'=>""),array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
+	}
+	if(empty($_POST['3sub_button5'])){
+		updatetable("weixinmenu",array('sub_function5'=>""),array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
+	}	
 	updatetable("weixinmenu",$dataarr1,array('fathernum'=>'1','uid'=>$_SGLOBAL['supe_uid']));
 	updatetable("weixinmenu",$dataarr2,array('fathernum'=>'2','uid'=>$_SGLOBAL['supe_uid']));
 	updatetable("weixinmenu",$dataarr3,array('fathernum'=>'3','uid'=>$_SGLOBAL['supe_uid']));
 	}
+
+
 
 $query = $_SGLOBAL['db']->query("SELECT * FROM ".tname('weixinmenu')."  WHERE uid='$_SGLOBAL[supe_uid]' order by fathernum ASC");
 while ($value = $_SGLOBAL['db']->fetch_array($query)) {

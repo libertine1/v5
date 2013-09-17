@@ -179,7 +179,18 @@ class wechatCallbackapiTest
                             $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                             $articles[] = makeArticleItem($name, $name, $pic, $url);
                             for($i=0;$i<$count;$i++){
-                             $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english;
+                        $menusetcount=$app_output->data->app[$i]->count;
+                        if($menusetcount=='1'){
+                        $idtype=$app_output->data->app[$i]->english;
+                        $idtypeid=$idtype."id";
+                        $table="uchome_".$idtype;
+                        $query = mysql_query("SELECT * FROM ".$table." WHERE uid=$row[uid]");
+                        $value = mysql_fetch_array($query);
+                        $id=$value["$idtypeid"];
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=$id&uid=$row[uid]&wxkey=".$fromUsername."&idtype=$idtypeid&type=$idtype&moblieclicknum=$row[moblieclicknum]"; 
+                        }else{
+                         $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english; 
+                        }
                              if($app_output->data->app[$i]->newname){
                              $subject=$app_output->data->app[$i]->newname;
                              }else{
@@ -191,8 +202,19 @@ class wechatCallbackapiTest
                               }  
                        
                               if($app_output->data->highapp){
-                                $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->highapp[0]->english;
-                                if($app_output->data->highapp[0]->newname){
+                                $menusetcount=$app_output->data->highapp[$i]->count;
+                        if($menusetcount=='1'){
+                        $idtype=$app_output->data->highapp[$i]->english;
+                        $idtypeid=$idtype."id";
+                        $table="uchome_".$idtype;
+                        $query = mysql_query("SELECT * FROM ".$table." WHERE uid=$row[uid]");
+                        $value = mysql_fetch_array($query);
+                        $id=$value["$idtypeid"];
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=$id&uid=$row[uid]&wxkey=".$fromUsername."&idtype=$idtypeid&type=$idtype&moblieclicknum=$row[moblieclicknum]"; 
+                        }else{
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->highapp[0]->english;
+                        }
+                        if($app_output->data->highapp[0]->newname){
                                  $subject=$app_output->data->highapp[0]->newname;
                                  }else{
                                  $subject=$app_output->data->highapp[0]->subject;
@@ -258,9 +280,11 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                             //$pic = $matches[1][0];
+                            /* $pic = $matches[1][0];*/
                               if($app_output->data->introduce->pic){
-                              $pic ="http://v5.home3d.cn/home/".$app_output->data->introduce->pic;
+                              $pic ="http://v5.home3d.cn/home/attachment/".$app_output->data->introduce->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/attachment/","http://v5.home3d.cn/home/attachment/",$pic);
+                               $pic = str_replace("http://v5.home3d.cn/home/attachment/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
                             }else{
                               $pic="";
                             }
@@ -282,11 +306,17 @@ class wechatCallbackapiTest
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
                               //$pic = $matches[1][0];
-                               if($app_output->data->branch->pic){
+                              if($app_output->data->branch->pic){
                               $pic ="http://v5.home3d.cn/home/".$app_output->data->branch->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
                             }else{
                               $pic="";
                             }
+                              /* if($app_output->data->branch->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->branch->pic;
+                            }else{
+                              $pic="";
+                            }*/
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -306,11 +336,17 @@ class wechatCallbackapiTest
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
                               //$pic = $matches[1][0];
-                               if($app_output->data->industry->pic){
+                              if($app_output->data->industry->pic){
                               $pic ="http://v5.home3d.cn/home/".$app_output->data->industry->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
                             }else{
                               $pic="";
                             }
+                              /* if($app_output->data->industry->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->industry->pic;
+                            }else{
+                              $pic="";
+                            }*/
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -345,7 +381,13 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                              //$pic = $matches[1][0];
+                              if($app_output->data->product->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->product->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
+                            }else{
+                              $pic="";
+                            }
                              
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
@@ -364,8 +406,9 @@ class wechatCallbackapiTest
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
                               //$pic = $matches[1][0];
-                               if($app_output->data->development->pic){
+                              if($app_output->data->development->pic){
                               $pic ="http://v5.home3d.cn/home/".$app_output->data->development->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
                             }else{
                               $pic="";
                             }
@@ -387,12 +430,18 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              //$pic = $matches[1][0];
-                               if($app_output->data->goods->pic){
+                              /*$pic = $matches[1][0];*/
+                              if($app_output->data->goods->pic){
                               $pic ="http://v5.home3d.cn/home/".$app_output->data->goods->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
                             }else{
                               $pic="";
                             }
+                               /*if($app_output->data->goods->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->goods->pic;
+                            }else{
+                              $pic="";
+                            }*/
                                $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
                               echo $resultStr;
@@ -410,7 +459,13 @@ class wechatCallbackapiTest
                                $arr = explode("。",$message2);
                                $arr1 = explode(".",$arr[0]);
                               $message2 =$arr1[0]."...";
-                              $pic = $matches[1][0];
+                             /* $pic = $matches[1][0];*/
+                             if($app_output->data->cases->pic){
+                              $pic ="http://v5.home3d.cn/home/".$app_output->data->cases->pic;
+                              $pic = str_replace("http://v5.home3d.cn/home/http://v5.home3d.cn/home/","http://v5.home3d.cn/home/",$pic);
+                            }else{
+                              $pic="";
+                            }
                               
                               $articles[] = makeArticleItem($subject, $message2, $pic, $url); 
                               $resultStr = makeArticles($fromUsername, $toUsername, $time, $msgType, $name,$articles);  
@@ -423,7 +478,7 @@ class wechatCallbackapiTest
              }
                          
         }else{
-           $contentStr.="123";
+           $contentStr.="$toUsername";
                $msgType = "text";
                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                echo $resultStr;
@@ -493,19 +548,53 @@ class wechatCallbackapiTest
                     $pic = "http://v5.home3d.cn/home/".$wei2[imageurl];
                     $articles[] = makeArticleItem($name, $name, $pic, $url);
                       for($i=0;$i<$count;$i++){
+                        
+                       //$url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english;
+                        $menusetcount=$app_output->data->app[$i]->count;
+                        if($menusetcount=='1'){
+                        $idtype=$app_output->data->app[$i]->english;
+                        $idtypeid=$idtype."id";
+                        $table="uchome_".$idtype;
+                        $query = mysql_query("SELECT * FROM ".$table." WHERE uid=$row[uid]");
+                        $value = mysql_fetch_array($query);
+                        $id=$value["$idtypeid"];
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=$id&uid=$row[uid]&wxkey=".$fromUsername."&idtype=$idtypeid&type=$idtype&moblieclicknum=$row[moblieclicknum]"; 
+                        }else{
+                         $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english; 
+                        }
+                       /* if($menusetcount=='1'){
                        $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->app[$i]->english;
+                       }else{
+                        $id=$app_output->data->app[$i]->id;
+                        $idtype=$app_output->data->app[$i]->english;
+                        $idtypeid=$idtype."id";
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=$id&uid=$row[uid]&idtype=$idtypeid&type=$idtype&moblieclicknum=$row[moblieclicknum]"; 
+                       }*/
                        if($app_output->data->app[$i]->newname){
                        $subject=$app_output->data->app[$i]->newname;
                        }else{
                        $subject=$app_output->data->app[$i]->subject;
                      }
+                     
                        $pic = "http://v5.home3d.cn/home/".$app_output->data->app[$i]->image1url;
 
                        $articles[] = makeArticleItem($subject, $subject, $pic, $url); 
                       }  
                        
                     if($app_output->data->highapp){
-                      $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->highapp[0]->english;
+                        $menusetcount=$app_output->data->highapp[$i]->count;
+                        if($menusetcount=='1'){
+                        $idtype=$app_output->data->highapp[$i]->english;
+                        $idtypeid=$idtype."id";
+                        $table="uchome_".$idtype;
+                        $query = mysql_query("SELECT * FROM ".$table." WHERE uid=$row[uid]");
+                        $value = mysql_fetch_array($query);
+                        $id=$value["$idtypeid"];
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?do=detail&id=$id&uid=$row[uid]&wxkey=".$fromUsername."&idtype=$idtypeid&type=$idtype&moblieclicknum=$row[moblieclicknum]"; 
+                        }else{
+                       $url = "http://v5.home3d.cn/home/wx/wx.php?uid=$row[uid]&do=feed&num=rand()&wxkey=".$fromUsername."&uid=".$row[uid]."&idtype=".$app_output->data->highapp[0]->english;
+                        }
+                      
                       if($app_output->data->highapp[0]->newname){
                        $subject=$app_output->data->highapp[0]->newname;
                        }else{

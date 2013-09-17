@@ -1,0 +1,110 @@
+.successCase {
+	margin-top: 30px;
+	height: 400px;
+}
+
+/*背景*/ 
+
+#firstCase {
+	background: url('./image/img/big_pic_success1.png');
+}
+
+#secondCase {
+	background: url('./image/img/big_pic_success2.png');
+}
+
+#thirdCase {
+	background: url('./image/img/big_pic_success3.png');
+}
+
+/*案例标题*/ 
+
+.caseTitle {
+	font-size: 30px;
+	color: #43423E;
+}
+
+#firstCase .caseTitle {
+	position: relative;
+	top: 245px;
+	left: 640px;
+}
+
+#secondCase .caseTitle {
+	position: relative;
+	top:98px;
+	left: 180px;
+}
+
+#thirdCase .caseTitle {
+	position: relative;
+	top: 264px;
+	left: 256px;
+}
+
+/*案例描述*/ 
+
+.description {
+	font-size: 14px;
+	line-height: 150%;
+	color: #666;
+}
+
+#firstCase .description {
+	position: relative;
+	top: 90px;
+	left: 512px;
+}
+
+#secondCase .description {
+	position: relative;
+	top: 160px;
+	left: 37px;
+}
+
+#thirdCase  .description {
+	position: relative;
+	top: 110px;
+	left: 28px;
+}
+
+/*缩进类*/ 
+
+.indentGrade0 {
+	text-indent: 0;
+}
+
+.indentGrade1 {
+	text-indent: 2em;
+}
+
+.indentGrade2 {
+	text-indent: 4em;
+}
+
+.indentGrade3 {
+	text-indent: 6em;
+}
+
+/*底部边距*/ 
+
+.bottomWrapper {
+	margin-top: 60px;
+}
+
+
+
+.bottomWrapper .contactUs .listItem:link
+{
+    color: #BBBBBB;
+    *color: #BBBBBB ;
+    _color: #BBBBBB;
+}
+
+.bottomWrapper .contactUs .listItem:hover
+{
+    color: #60B4AE;
+    *color:  #60B4AE ;
+    _color:  #60B4AE;
+
+}

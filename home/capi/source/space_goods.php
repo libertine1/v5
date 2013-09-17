@@ -42,7 +42,22 @@ if($id) {
 	$query = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('goods')." b LEFT JOIN ".tname('goodsfield')." bf ON bf.goodsid=b.goodsid WHERE b.goodsid='$id' AND b.uid='$space[uid]'");
 	$goods = $_SGLOBAL['db']->fetch_array($query);
 	$goods["message"] = capi_fhtml($goods["message"]);
-	capi_showmessage_by_data("rest_success", 0, array('goods'=>$goods, 'count'=>count($goods)));
+	$count1 = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('goodscod')."  WHERE viewuid='$_REQUEST[uid]' and gid='$_REQUEST[id]' and status='0'"),0);
+	$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')."
+		WHERE viewuid='$_REQUEST[uid]' and gid='$_REQUEST[id]' and status='0' order by dateline DESC
+		LIMIT 0,30");
+	while ($value1 = $_SGLOBAL['db']->fetch_array($query1)) {
+		$query2 = $_SGLOBAL['db']->query("SELECT bf.message, bf.target_ids, bf.magiccolor, b.* FROM ".tname('goods')." b 
+				LEFT JOIN ".tname('goodsfield')." bf ON bf.goodsid=b.goodsid
+				WHERE b.goodsid='$value1[gid]'");
+		$value2 = $_SGLOBAL['db']->fetch_array($query2);
+		
+		$value1['more']=$value2;
+
+		realname_set($value1['uid'], $value1['username']);
+		$goodscod[] = $value1;
+	}
+	capi_showmessage_by_data("rest_success", 0, array('goods'=>$goods,'goodscod'=>$goodscod,'count1'=>$count1, 'count'=>count($goods)));
 	//ÈÕÖ¾²»´æÔÚ
 	if(empty($goods)) {
 		capi_showmessage_by_data('view_to_info_did_not_exist');
@@ -414,7 +429,7 @@ if($id) {
 			}
 		}
 	}
-
+	
 	//·ÖÒ³
 	$multi = multi($count, $perpage, $page, $theurl);
 

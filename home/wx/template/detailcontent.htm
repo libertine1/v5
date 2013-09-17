@@ -55,22 +55,14 @@
 			<div id="friend" class="friend_wrapper">
              <a id="" class="friend_btn" style="" onclick="showDIv()">
                        <img src="./template/img/repost_icon.png" alt="">
-                       <span>发送给朋友</span>
+                       <span style="font-size:20px;">发送给朋友</span>
              </a>
              <a id="" class="friend_btn" style="margin-left:20px;" onclick="showFriendDIv()">
                        <img src="./template/img/friend_circle.png" alt="">
                        <span>分享到朋友圈</span>
              </a>
-             <h3 style="font-size:14px;margin-bottom:-10px;">安卓用户请点击：</h3>
-             <a id="" class="add_btn" href="weixin://addfriend/$uidwxkey[wxkey]">
-                 <span>关注</span>
-             </a>
-             <h3 style="font-size:14px;margin-bottom:-10px;">iOS用户请订阅：</h3><br>
-             <!--{if $uidwxkey[wxkey]}-->
-             <h3 style="font-size:14px;">1、搜索微信号：$uidwxkey[wxkey]</h3>
-             <!--{/if}-->
-              <!--{if $uidwxkey[weixinname]}-->
-             <h3 style="font-size:14px;">2、关注微信公众账号：$uidwxkey[weixinname]</h3>
+               <!--{if $uidwxkey[weixinname]}-->
+             <h3 style="font-size:14px;margin-bottom:-10px;">手机用户请关注微信公众账号：$uidwxkey[weixinname]</h3>
              <!--{/if}-->
          </div><!-- / -->
 			<div class="button_buy" onclick="">

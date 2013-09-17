@@ -17,6 +17,21 @@ $ac=$_GET['ac'];
 $query4 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('menuset')." WHERE english='$ac'");
 $value4 = $_SGLOBAL['db']->fetch_array($query4);
 $wei1=$value4;
+
+	$query9 = $_SGLOBAL['db']->query("SELECT s.*, f.resideprovince, f.residecity, f.note, f.spacenote, f.sex, main.gid, main.num
+				FROM ".tname('friend')." main
+				LEFT JOIN ".tname('space')." s ON s.uid=main.fuid
+				LEFT JOIN ".tname('spacefield')." f ON f.uid=main.fuid
+				WHERE main.uid='$space[uid]' AND main.status='1'
+				ORDER BY main.dateline DESC");
+	while ($value = $_SGLOBAL['db']->fetch_array($query9)) {
+				$list[]=$value;
+
+
+		}
+$value4 = $_SGLOBAL['db']->fetch_array($query4);
+$wei1=$value4;
+
 //判断是否购买
 $query5 = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf $f_index
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
@@ -34,6 +49,10 @@ if($goodsid) {
 		LEFT JOIN ".tname('goodsfield')." bf ON bf.goodsid=b.goodsid 
 		WHERE b.goodsid='$goodsid'");
 	$goods = $_SGLOBAL['db']->fetch_array($query);
+	$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('space')." 
+		WHERE fakeid='$goods[push]'");
+	$value=$_SGLOBAL['db']->fetch_array($query1);
+	$goods['name']=$value['name'];
 }
 
 //È¨ÏÞ¼ì²é

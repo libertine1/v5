@@ -116,32 +116,45 @@ body{
 .list li a{
 	text-decoration: none;
 }
-
-.list li div{
+.listOuter{
 	overflow: hidden;
 	border-left: 5px solid rgb(118, 209, 205);
 	box-shadow: 1px 1px 3px #BCBCBC;
+	height: 84px;
+	background-color: white;
 }
 
-.list li a div img{
-	max-width: 75px;
+.listInner{
+	width: 72%;
+	height: 45px;
+	overflow: hidden;
+	margin-top: 7px;
+}
+
+.list li img{
+	max-width: 69px;
 	float: right;
+	position: relative;
+	margin-right: 7px;
+	margin-top: 7px;
 }
 
-.list li div h4{
-	padding: 18px 0 0 3.4375%;
+.list h4{
+	padding: 4px 0 0 10px;
 	color: rgb(100, 100, 100);
+	font-size: 15px;
+	line-height: 1.2;
 }
 
-.list li div h4	span{
+.list h4 span{
 	padding-left: 3.75%;
 	color: rgb(66, 184, 177);
 }
 
-.info_span{
-	padding: 0 0 0 3.4375%;
-}
 
+.info_span{
+	padding: 0 0 0 10px;
+}
 .subtitle{
 	color: rgb(204, 204, 204);
 	font-size: small;

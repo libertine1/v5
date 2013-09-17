@@ -477,8 +477,30 @@ if($_GET['view'] != 'me') {
 				LEFT JOIN ".tname('menusetfield')." bf ON bf.menusetid=b.menusetid
 				ORDER BY $ordersql ASC ");
 			while ($value1 = $_SGLOBAL['db']->fetch_array($query1)) {
-				$all[] = $value1;
+				$wei=explode("，",$value1['apptag']);
+				if(in_array("普通", $wei)){
+				$putong[] = $value1;
+				}
 			}
+			$query2 = $_SGLOBAL['db']->query("SELECT bf.message, bf.target_ids, bf.magiccolor, b.* FROM ".tname('menuset')." b $f_index
+				LEFT JOIN ".tname('menusetfield')." bf ON bf.menusetid=b.menusetid
+				ORDER BY $ordersql ASC ");
+			while ($value2 = $_SGLOBAL['db']->fetch_array($query2)) {
+				$wei=explode("，",$value2['apptag']);
+				if(in_array("高级", $wei)){
+				$gaoji[] = $value2;
+				}
+			}
+			$query3 = $_SGLOBAL['db']->query("SELECT bf.message, bf.target_ids, bf.magiccolor, b.* FROM ".tname('menuset')." b $f_index
+				LEFT JOIN ".tname('menusetfield')." bf ON bf.menusetid=b.menusetid
+				ORDER BY $ordersql ASC ");
+			while ($value3 = $_SGLOBAL['db']->fetch_array($query3)) {
+				$wei=explode("，",$value3['apptag']);
+				if(in_array("免费", $wei)){
+				$mianfei[] = $value3;
+				}
+			}
+			
 
 	$multi = multi($count, $perpage, $page, $theurl);
 
@@ -538,16 +560,22 @@ if($_GET['view'] != 'me') {
 	$showmessage1='订制成功。';
 	$showlink1="space.php?do=menuset&view=me";
 }
+
+
 }
+
 }
-if($showmessage){
-	showmessage("$showmessage","$showlink");
-}else{
-	if($zhong1){
-	showmessage("订制成功","space.php?do=menuset&view=me");
+$query3 = $_SGLOBAL['db']->query("SELECT  SUM(money) as wei FROM ".tname('appset')." bf LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid WHERE bf.uid=$_SGLOBAL[supe_uid] and bf.appstatus='0'");
+$value3 = $_SGLOBAL['db']->fetch_array($query3);
+
+	if($value3['wei']){
+		if($_GET['status']=='taocan'){
+	showmessage("你所选择的应用包含付费应用，现在为你跳转到支付页面。","space.php?do=showmenuset1&id=$_GET[id]");		
+		}else{
+	showmessage("你所选择的应用包含付费应用，现在为你跳转到支付页面。","space.php?do=showmenuset");
+	}
 	}else{
-	showmessage("提交成功","space.php?do=highmenuset");
-}
+	include"./template/default/allcomplete.htm";
 }
 }
 $query4 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('appset')." WHERE uid='$space[uid]' and appstatus='1'");

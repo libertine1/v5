@@ -3,16 +3,36 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>微伍v5</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">  
-    <!-- Bootstrap -->
+    <meta charset="UTF-8" />
+        <meta name="description" content="微伍——企业移动互联网解决方案" />
+        <meta name="keywords" content="微伍, 微信, 移动互联, 企业" />
+        <title>成功案例</title>
+        <link rel="stylesheet" href="./template/default/base.css" />
+        <link rel="stylesheet" href="./template/default/common.css" />
+        <link rel="stylesheet" href="./template/default/nav.css" />
+        <link rel="stylesheet" href="./template/default/bottomWrapper.css" />
+        <link rel="stylesheet" href="./template/default/success.css" />
+        <script type="text/javascript" src="./source/jquery-1.9.0.min.js"></script>
+        <script type="text/javascript"></script>
+    <!--[if IE 6]>
+        <script type="text/javascript" src="js/DD_belatedPNG.js"></script>
+        <script type="text/javascript" src="js/IEwarning.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            DD_belatedPNG.fix(".pngFix,.pngFix:hover");      
+        </script>
+   <![endif]-->
+        <!--[if IE 7]>
+        <script type="text/javascript" src="js/IEwarning.js"></script>
+        <![endif]-->
+   <!-- 修复ie6透明png的bug -->
    <!--  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
     <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
     <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
      
     <style type="text/css">
+    .wrapper {
+          background-color: #fff;
+        }
         .companies .grid_3 span img{
              max-width:71px;max-height:71px;min-width:71px;min-height:71px;
           } 
@@ -30,7 +50,7 @@
              </style>
   </head>
   <body>
-    
+    <div class="page bc">
     <div class="wrapper">
         <div class="navbar">
             <div class="navbar-inner container_36">
@@ -39,13 +59,44 @@
                 <a href="buy.php" class="grid_2">套餐</a>
                 <a href="cases.php" class="grid_2"><p class="nav_actived">成功案例</p></a>
                 <a href="myhelp.php" class="grid_2">帮助</a>
-                <a href="network.php" class="grid_5" style="float:right;color:#BDBEBF;padding-right:18px;">登陆/注册</a>
+                <a href="network.php" class="grid_5" style="float:right;color:#ffffff;padding-right:18px;z-index:1">
+                <div class="zhuce" style="z-index:1;position:relative;top:10px"><img src="./template/default/image/buttom.png"></div>
+                <div class="zhuce2" style="position:relative;top:-55px;left:10px;z-index:2;font-size:15px">注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆</div></a>
                 <!-- <a href="#" class="grid_5" style="float:right;color:#BDBEBF;padding-right:18px;">帮助</a> -->
              </div>
          </div>
          <!-- navbar end -->
 
-         <img src="./template/default/image/cases.jpg">
+        <div id="firstCase" class="successCase">
+            <h2 class="caseTitle fb">美姿网</h2>
+            <div class="description">
+                <p class="indentGrade0">微伍一直秉承着为客户提供最好、最简捷的服务这个理念，根据</p>
+                <p class="indentGrade1">不同企业客户，推荐选择使用针对性的服务组件。为美姿网建设</p>
+                <p class="indentGrade2">唯一的微信水密码旗舰店，通过微信渠道为消费者提供咨询，预</p>
+                <p class="indentGrade3">订，在线支付等各种服务，帮助美姿网进入一个全新的电商时代。</p>
+            </div>
+        </div> <!-- successCase --> 
+
+        <div id="secondCase" class="successCase">
+            <h2 class="caseTitle fb">香格里拉大酒店</h2>
+            <div class="description">
+                <p class="indentGrade0">香格里拉大酒店通过微伍平台，开通了客房预订、服务预约、</p>
+                <p class="indentGrade1">微信会员卡等功能，贴心热诚为客户提供五星级的服务。在</p>
+                <p class="indentGrade2">这过程中微伍协助酒店以快速、便利的服务，提升客户关注，</p>
+                <p class="indentGrade3">帮助酒店转化沉淀优质客户。</p>
+            </div>
+        </div> <!-- successCase --> 
+
+        <div id="thirdCase" class="successCase">
+            <h2 class="caseTitle fb">九号行馆</h2>
+            <div class="description">
+                <p class="indentGrade3">微伍是一个快速的、便捷的无线建站工具，以微信为入口，</p>
+                <p class="indentGrade2">扩展品牌微信号的展示能力和互动客户服务功能。为九号行</p>
+                <p class="indentGrade1">馆定制了在线咨询、服务预订、会员卡等功能，使客户能优</p>
+                <p class="indentGrade0">先了解所有资讯，进店即享受服务。</p>
+            </div>
+        </div> <!-- successCase --> 
+        </div>
 
   
 <!--{template footer}-->

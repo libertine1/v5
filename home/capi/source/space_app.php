@@ -4,13 +4,13 @@
 	$Id: space_app.php 13003 2009-08-05 06:46:06Z liguode $
 	用户购买应用数据输出
 */	
-	
 	$query = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf $f_index
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
 				WHERE bf.uid='$_REQUEST[uid]' and bf.appstatus='1' and b.style='1'
 				ORDER BY bf.orderid ASC ");
 	while ($value = $_SGLOBAL['db']->fetch_array($query)) {
-			
+			$count1 = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname($value['english'])." WHERE uid='$_REQUEST[uid]'"),0);
+			$value['count']=$count1;
 			$list[]=$value;
 
 	}
@@ -19,7 +19,8 @@
 				WHERE bf.uid='$_REQUEST[uid]' and bf.appstatus='1' and b.english='goods'
 				ORDER BY bf.orderid ASC ");
 	while ($value1 = $_SGLOBAL['db']->fetch_array($query1)) {
-			
+			$count2 = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname($value1['english'])." WHERE uid='$_REQUEST[uid]'"),0);
+			$value1['count']=$count2;
 			$list1[]=$value1;
 
 	}

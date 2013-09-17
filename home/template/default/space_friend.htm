@@ -76,8 +76,16 @@ color:#02B4AB;
                  </div>		
 
  <div class="content_detail_wrapper">
- <div id="nav" style="margin-top:20px;margin-left:180px;">
-<a href="space.php?do=friend" style="<!--{if $_GET['view']=='me'}-->color:#02B4AB<!--{/if}-->">最新关注排序</a><a href="space.php?do=friend&view=lastlogin" style="padding-left:20px;<!--{if $_GET['view']=='lastlogin'}-->color:#02B4AB<!--{/if}-->">最后登陆时间排序</a><a href="space.php?do=friend&view=hot" style="padding-left:20px;<!--{if $_GET['view']=='hot'}-->color:#02B4AB<!--{/if}-->">活跃度排序</a>  
+ <!--{if $count2}-->
+ <div id="nav" style="margin-top:20px;margin-left:120px;">
+ <!--{else}-->
+  <div id="nav" style="margin-top:20px;margin-left:180px;">
+ <!--{/if}--> 
+<a href="space.php?do=friend" style="<!--{if $_GET['view']=='me'}-->color:#02B4AB<!--{/if}-->">最新关注排序</a><a href="space.php?do=friend&view=lastlogin" style="padding-left:20px;<!--{if $_GET['view']=='lastlogin'}-->color:#02B4AB<!--{/if}-->">最后登陆时间排序</a><a href="space.php?do=friend&view=hot" style="padding-left:20px;<!--{if $_GET['view']=='hot'}-->color:#02B4AB<!--{/if}-->">活跃度排序</a>
+<!--{if $count2}-->
+<a href="space.php?do=friend&view=free" style="padding-left:20px;<!--{if $_GET['view']=='free'}-->color:#02B4AB<!--{/if}-->">免费用户</a>
+<a href="space.php?do=friend&view=case" style="padding-left:20px;<!--{if $_GET['view']=='case'}-->color:#02B4AB<!--{/if}-->">收费用户</a>
+<!--{/if}-->  
  	</div>
 
 

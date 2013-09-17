@@ -7,8 +7,24 @@
 	height: 100%;
 	background: rgba(0,0,0,0.5);
 }
+.expressInfo1 {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+}
 
 .formContainer {
+	margin-top: 1%;
+	border-radius: 5px;
+	background: -webkit-linear-gradient(#FDFDFD, #DDD);
+	width: 70%;
+	height: 280px;
+}
+.formContainer1 {
 	margin-top: 1%;
 	border-radius: 5px;
 	background: -webkit-linear-gradient(#FDFDFD, #DDD);

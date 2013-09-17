@@ -4,8 +4,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>微伍v5</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8" />
+
+    <meta name="description" content="微伍——企业移动互联网解决方案" />
+    <meta name="keywords" content="微伍, 微信, 移动互联, 企业" />
     <meta charset="utf-8">
+      <link rel="stylesheet" href="./template/default/base.css" />
+      <link rel="stylesheet" href="./template/default/common.css" />
+      <link rel="stylesheet" href="./template/default/nav.css" />
+
+      <link rel="stylesheet" href="./template/default/success.css" />
+      <link rel="stylesheet" href="./template/default/bottomWrapper.css" />
+
+      <link rel="stylesheet" href="./template/default/helpCenter.css" />
+      <script type="text/javascript" src="./source/jquery-1.9.0.min.js"></script>
+      <script type="text/javascript" src="./source/jquery-1.10.2.js"></script>
+      <script type="text/javascript" src="./source/helpCenter_effect.js"></script>
+      <script type="text/javascript" src="./source/helpCenter_function.js"></script>
+      <!-- myAll.js 文件包含我写的所有js函数。 lrx-->
+      <script type="text/javascript" src="./source/myAll.js"></script>
+      <script type="text/javascript"></script>
+      <!--[if IE 6]>
+      <script type="text/javascript" src="js/DD_belatedPNG.js"></script>
+      <script type="text/javascript" src="js/IEwarning.js"></script>
+      <script type="text/javascript" charset="utf-8">
+          DD_belatedPNG.fix(".pngFix,.pngFix:hover");
+      </script>
+      <![endif]-->
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">  
     <!-- Bootstrap -->
    <!--  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
@@ -21,7 +46,7 @@
         }
         /*login hack*/
         #email,#tx,#pwd{
-        margin-left:-12px\9;
+        margin-left:-12px;
         }
 
         body{
@@ -31,22 +56,119 @@
              </style>
   </head>
   <body>
-    
-    <div class="wrapper">
-        <div class="navbar">
+
+    <div class="wrapper"  style="background-color: white">
+    <div class="navbar">
             <div class="navbar-inner container_36">
                 <a class="logo grid_1" href="space.php?do=home"><img src="./template/default/image/logo.png"></a>
                 <a href="home.php" class="grid_2">首页</a>
                 <a href="buy.php" class="grid_2">套餐</a>
                 <a href="cases.php" class="grid_2">成功案例</a>
                 <a href="myhelp.php" class="grid_2"><p class="nav_actived">帮助</p></a>
-                <a href="network.php" class="grid_5" style="float:right;color:#BDBEBF;padding-right:18px;">登陆/注册</a>
+                 <a href="network.php" class="grid_5" style="float:right;color:#ffffff;padding-right:18px;z-index:1">
+                <div class="zhuce" style="z-index:1;position:relative;top:10px"><img src="./template/default/image/buttom.png"></div>
+                <div class="zhuce2" style="position:relative;top:-55px;left:10px;z-index:2;font-size:15px">注册&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登陆</div></a>
              </div>
          </div>
-         <!-- navbar end -->
+    <!-- navbar end -->
 
-         <img src="./template/default/image/myhelp.jpg">
 
-  
+
+
+        <div class="helpCenterBody" style="outline: snow;outline-color: white;outline-style: hidden">
+
+            <div class="menubox">
+                <div class="menuboxhelp"><span>帮 &nbsp;助</span></div>
+                <div class="list2">
+                    <ul>
+                        <li><span>使用帮助</span></li>
+                        <!--{if $value[developmentid]==60}-->  <li class="HaveChoose">· 开通流程
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px" ></li>
+                        <!--{else}-->  <li class="choose">· 开通流程
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px" ></li>  <!--{/if}-->
+                        <!--{if $value[developmentid]==70}-->   <li class="HaveChoose">· 管理员手册
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 104px;top: 2px"></li>
+                        <!--{else}-->   <li class="choose">· 管理员手册
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 104px;top: 2px"></li> <!--{/if}-->
+                        <!--{if $value[developmentid]==69}-->    <li class="HaveChoose">· 用户手册
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}-->    <li class="choose">· 用户手册
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li>  <!--{/if}-->
+                    </ul>
+                    <ul>
+                        <li ><span>投诉与建议</span></li>
+                        <!--{if $value[developmentid]==61}-->   <li class="HaveChoose">· 在线客服
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}-->  <li class="choose">· 在线客服
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li>  <!--{/if}-->
+                        <!--{if $value[introduceid]==59}-->   <li class="HaveChoose">· 留言板
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 136px;top: 2px"></li>
+                        <!--{else}-->    <li class="choose">· 留言板
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 136px;top: 2px"></li>   <!--{/if}-->
+                    </ul>
+                    <ul>
+                        <li><span>合作</span></li>
+                        <!--{if $value[developmentid]==62}-->   <li class="HaveChoose">· 品牌企业合作
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 88px;top: 2px"></li>
+                        <!--{else}-->   <li class="choose">· 品牌企业合作
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 88px;top: 2px"></li>  <!--{/if}-->
+                        <!--{if $value[developmentid]==63}-->   <li class="HaveChoose">· 媒体合作
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}-->   <li class="choose">· 媒体合作
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li><!--{/if}-->
+                        <!--{if $value[developmentid]==72}-->   <li class="HaveChoose">· 收费细节
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}-->  <li class="choose">· 收费细节
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li> <!--{/if}-->
+                    </ul>
+                    <ul>
+                        <li><span>关于我们</span></li>
+                        <!--{if $value[productid]==49||$value==null}--> <li class="HaveChoose">· 产品介绍
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}--> <li class="choose">· 产品介绍
+                        <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li> <!--{/if}-->
+                        <!--{if $value[introduceid]==48}-->   <li class="HaveChoose">· 联系方式
+                        <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}--> <li class="choose">· 联系方式
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li><!--{/if}-->
+                        <!--{if $value[developmentid]==71}-->  <li class="HaveChoose">· 人才招聘
+                            <img src="./template/default/image/buttom2.png" class="buttom" style="left: 120px;top: 2px"></li>
+                        <!--{else}-->  <li class="choose">· 人才招聘
+                            <img src="./template/default/image/buttom1_1.png" class="buttom" style="left: 120px;top: 2px"></li> <!--{/if}-->
+                    </ul>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+
+            <!-----------------------------------------------------功能分隔----------------------------------------------------->
+            <div class="searchbox">
+                <div class="search_pic"><img src="./template/default/image/helpCenterSearch.fw_r2_c4.png"></div>
+                <div class="search_text">
+                    <textarea rows="1" style="resize: none;outline: none">请输入问题关键字</textarea>
+                </div>
+                <div class="search_buttom"></div>
+                <div style="clear: both"></div>
+            </div>
+            <!-----------------------------------------------------功能分隔----------------------------------------------------->
+            <div class="contentbox">
+                <div class="contenttitle"><span>$value[subject]</span></div>
+                <div class="content_pic"></div>
+                <div class="contenttext">
+
+                    <p>$value[message1]</p>
+
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <!-- 你的代码end -->
+
+     </div>
+    <div style="clear: both"></div>
+
 <!--{template footer}-->
     <!--<script src="js/bootstrap.min.js"></script>-->
+  </body>
+</html>
+

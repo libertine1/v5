@@ -56,6 +56,8 @@ if($verify_result) {//验证成功
 				if($row['appstatus']=='0'){
 				$sql="update uchome_appset set appstatus='1' where uid = $b";
 				mysql_query($sql,$conn);
+				$sql1="update uchome_space set buystatus='1' where uid = $b";
+				mysql_query($sql1,$conn);
 				}else{
 				$month=$row['month']+$row['addmonth'];
 				$sql="update uchome_appset set month = month+'$row[addmonth]' where uid = $b and id=$row[id]";
@@ -64,6 +66,8 @@ if($verify_result) {//验证成功
 				mysql_query($sql3,$conn);
 				$sql2="update uchome_appset set addmonth='0' where uid = $b";
 				mysql_query($sql2,$conn);
+				$sql4="update uchome_space set buystatus='1' where uid = $b";
+				mysql_query($sql4,$conn);
 				}
 			}
 		//注意：

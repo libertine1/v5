@@ -7,6 +7,7 @@
 if(!defined('IN_UCHOME')) {
 	exit('Access Denied');
 }
+
 	if ($space['profilestatus']=='0'&&$space['namestatus']=='0'){
 		include 'cp.php?ac=profile';
 	}elseif($space['profilestatus']!='0'&&$space['namestatus']=='0'&&$space['alreadyreg']=='0'){
@@ -17,7 +18,20 @@ if(!defined('IN_UCHOME')) {
 if(!in_array($_GET['op'], array('base','contact','edu','work','info'))) {
 	$_GET['op'] = 'base';
 }
-	
+		$query2 = $_SGLOBAL['db']->query("SELECT s.*, f.resideprovince, f.residecity, f.note, f.spacenote, f.sex
+				FROM  ".tname('space')." s LEFT JOIN ".tname('spacefield')." f ON f.uid=s.uid
+				WHERE s.weixinname!=''
+				ORDER BY s.dateline DESC");
+	while ($value = $_SGLOBAL['db']->fetch_array($query2)) {
+				$list[]=$value;
+
+
+		}
+		if($_POST['recomendweixin']){
+			$recomendman=$_POST['recomendman'];
+			updatetable("space",array('recomendman'=>$recomendman),array('uid'=>$_SGLOBAL['supe_uid']));
+			showmessage("提交成功","cp.php?ac=profile");
+		}
 $theurl = "cp.php?ac=profile&op=$_GET[op]";
 
 if($_GET['op'] == 'base') {
@@ -166,7 +180,6 @@ if($_GET['op'] == 'base') {
   			$image2= new upload2;
   			$image2->upload_file2($_SGLOBAL['supe_uid'],"spacefield");
   		}
-
 		//ÐÔ±ð
 		$_POST['sex'] = intval($_POST['sex']);
 		if($_POST['sex'] && empty($space['sex'])) $setarr['sex'] = $_POST['sex'];

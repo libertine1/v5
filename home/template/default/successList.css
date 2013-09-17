@@ -1,0 +1,62 @@
+.successList {
+	background: #EEE;
+	overflow: hidden;
+}
+
+.logoList-container {
+	width: 920px;
+	overflow: hidden;
+}
+
+.title {
+	background: #69B3AF;
+	width: 50px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.title img {
+	width: 19px;
+}
+
+.arrow {
+	width: 20px;
+	height: 110px;
+	background: #B4B4B4;
+}
+
+.arrow img {
+	position: relative;
+	top: 45%;
+}
+
+.logoList {
+	display: inline-block;
+}
+
+.logoShow {
+	display: inline-block;
+}
+
+.logoList {
+	position: relative;
+	overflow: hidden;
+	width: 1920px;
+	height: 110px;
+	padding-top: 13px;
+	padding-left: 10px;
+}
+
+.logoList img {
+	width: 80px;
+}
+
+.logoList li {
+	height: 100%;
+	width: 110px;
+	text-align: center;
+}
+
+.logoHide {
+}
+

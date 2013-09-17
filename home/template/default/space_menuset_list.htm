@@ -1,4 +1,4 @@
-<!--{eval $_TPL['titles'] = array('应用');}-->
+<!--{eval $_TPL['titles'] = array('组件');}-->
 <!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
 
 <!--{template header}-->
@@ -21,8 +21,8 @@
 <!--{if !empty($_SGLOBAL[inajax])}-->
 	<div id="space_menuset" class="feed">
 		<h3 class="feed_header">
-			<a href="cp.php?ac=menuset" class="r_option" target="_blank">发表应用</a>
-			应用(共 $count 篇)
+			<a href="cp.php?ac=menuset" class="r_option" target="_blank">发表组件</a>
+			组件(共 $count 篇)
 		</h3>
 		<!--{if $count}-->
 		<ul class="line_list">
@@ -37,11 +37,11 @@
 		<!--{/loop}-->
 		</ul>
 		<!--{if $pricount}-->
-		<div class="c_form">本页有 $pricount 篇应用因作者的隐私设置而隐藏</div>
+		<div class="c_form">本页有 $pricount 篇组件因作者的隐私设置而隐藏</div>
 		<!--{/if}-->
 		<div class="page">$multi</div>
 		<!--{else}-->
-		<div class="c_form">还没有相关的应用。</div>
+		<div class="c_form">还没有相关的组件。</div>
 		<!--{/if}-->
 	</div>
 <!--{else}-->
@@ -53,30 +53,35 @@
 <div class="content" style="font-size:15px;">
           
                  <div class="indexing">
-                   <span><a href="space.php?do=home">首页</a></span>><span>应用管理</span>
+                   <span><a href="space.php?do=home">首页</a></span>><span>组件管理</span>
                  </div><!-- end -->
                  <div class="bread container_12">
                  	<!--{if $_GET[view]=="all"}-->
                       <div class="bread_actived grid_1" style="space.php?uid=$space[uid]&do=$do&view=all"style="margin-left:10px;">
-                         更多应用
+                         更多组件
                      </div>
                      <a href="space.php?uid=$space[uid]&do=$do&view=me"  class="link_back_bread grid_3">
-                      我的应用
+                      我的组件
+                     </a>
+                     <a href="cp.php?ac=menusetchoice"  class="link_back_bread grid_3">
+                      组件套餐
                      </a>
                     
                      <!--{else}-->
                      <a href="space.php?uid=$space[uid]&do=$do&view=all" class="link_back_bread grid_3" style="margin-left:-10px;">
-                      更多应用
+                      更多组件
                      </a>
                      <div class="bread_actived grid_1" style="margin-left:10px;">
-                      我的应用
+                      我的组件
                      </div>
-                     
+                     <a href="cp.php?ac=menusetchoice"  class="link_back_bread grid_3">
+                      组件套餐
+                     </a>
                      <!--{/if}-->
 
                      <!--{if {$_SN[$_SGLOBAL[supe_uid]]}=='admin'}-->
                      <a href="cp.php?ac=menuset" class="btn grid_2" >
-                      发表新应用
+                      发表新组件
                      </a>
                      <!--{/if}-->
                      <a class="btn grid_2" href="space.php?do=menuset&view=me&change=1" >排序</a>
@@ -86,8 +91,8 @@
 <!--{/if}-->	
 <!--{else}-->
 <!--{eval 
-	$_TPL['spacetitle'] = "应用";
-	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有应用</a>";
+	$_TPL['spacetitle'] = "组件";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有组件</a>";
 }-->
 <!--{template space_menu}-->
 <!--{/if}-->
@@ -97,7 +102,7 @@
 
 	
 	<!--{if $searchkey}-->
-	<div class="h_status">以下是搜索应用 <span style="color:red;font-weight:bold;">$searchkey</span> 结果列表</div>
+	<div class="h_status">以下是搜索组件 <span style="color:red;font-weight:bold;">$searchkey</span> 结果列表</div>
 	<!--{/if}-->
 	<script language="javascript" type="text/javascript" src="source/script_ajax.js"></script>
 	<!--{if $count}-->
@@ -116,7 +121,7 @@
         <div class="grid_6">
                             <div class="index_assembly_box bg1" <!--{if $_GET[view]!='me'}--><!--{if !$value[money]}--><!--{eval $value1=$value['zhong'];}--><!--{if $value1[appstatus]=='1'}-->style="background: url('./template/default/image/chosen_bg3.png')!important;"<!--{/if}--><!--{/if}--><!--{/if}-->  id="choice">
                             <div class="assembly_title">
-       <!--{if $_GET[change]=='2'}--><span class="title"><input type="text" value="$value[subject]" name="$value['menusetid']"></span><!--{else}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[menusetid]" ><span class="title">$value[subject]</span></a><!--{/if}--><span style="font-size:2px;"><!--{if $_GET[view]!='me'}--><!--{eval $value2=$value['zhong'];}--><!--{if $value2[cheak]=='1'}--><a href="space.php?do=menuset&op=add&menusetid=$value['menusetid']">（此应用未过期，请戳我重新开通）</a><!--{/if}--><!--{/if}--></span><!--{if $_GET[view]=='me'}--><a href="cp.php?ac=menuset&menusetid=$value[menusetid]&op=delete1" class="r_option" style="padding-right:10px;padding-top:10px;" id="menuset_delete_$value[menusetid]" onclick="ajaxmenu(event, this.id)"><img src="./template/default/image/delete1.gif"></a><!--{/if}--></div>
+       <!--{if $_GET[change]=='2'}--><span class="title"><input type="text" value="$value[subject]" name="$value['menusetid']"></span><!--{else}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[menusetid]" ><span class="title">$value[subject]</span></a><!--{/if}--><span style="font-size:2px;"><!--{if $_GET[view]!='me'}--><!--{eval $value2=$value['zhong'];}--><!--{if $value2[cheak]=='1'}--><a href="space.php?do=menuset&op=add&menusetid=$value['menusetid']">（此组件未过期，请戳我重新开通）</a><!--{/if}--><!--{/if}--></span><!--{if $_GET[view]=='me'}--><a href="cp.php?ac=menuset&menusetid=$value[menusetid]&op=delete1" class="r_option" style="padding-right:10px;padding-top:10px;" id="menuset_delete_$value[menusetid]" onclick="ajaxmenu(event, this.id)"><img src="./template/default/image/delete1.gif"></a><!--{/if}--></div>
         <div id="num$value[menusetid]">
        <div id="numh$value[menusetid]"></div>
         <div class="assembly_info1">
@@ -164,10 +169,10 @@
    
     <!--{if $_GET[view]!='me'}-->
 		<!--{if empty($list)}-->
-		<div style="text-align:center;">系统没有为你匹配到你所属行业的相关应用，你可以通过修改行业选项。</div>
+		<div style="text-align:center;">系统没有为你匹配到你所属行业的相关组件，你可以通过修改行业选项。</div>
 		
 		<!--{else}-->
-		 <div class="confirm_btn container_12" style="width:760px;padding-left:400px;">
+		 <div class="confirm_btn container_12" style="width:760px;padding-left:310px;">
                            <input type="submit" id="wei0752" class="btn grid_2"></a>
                       </div>
 		<!--{/if}-->
@@ -177,7 +182,7 @@
 			</div>	
       <div class='pagination'><ul>$multi</ul></div>
 			 <!--{if $_GET[view]=='me'}--><!--{if $_GET[change]=='1'}-->
-    <div style="padding-bottom: 30px;padding-left:12px;">*如果需要更改应用顺序，请通过修改每个应用下的下拉框进行选择，系统会通过数字大小进行排列。<br/>*务必不要选择2个相同的数字</div>
+    <div style="padding-bottom: 30px;padding-left:12px;">*如果需要更改组件顺序，请通过修改每个组件下的下拉框进行选择，系统会通过数字大小进行排列。<br/>*务必不要选择2个相同的数字</div>
     
                            <input style="margin-left:330px;margin-top: -10px;" type="submit" class="btn grid_2">
                               <!--{else}-->
@@ -191,7 +196,7 @@
 	
 	
 	<!--{else}-->
-	<div class="c_form">还没有相关的应用。</div>
+	<div class="c_form">还没有相关的组件。</div>
 	<!--{/if}-->
 	</div>
 </div>

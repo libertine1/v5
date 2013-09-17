@@ -34,6 +34,7 @@ if($_POST['friendreply']){
 		showmessage("回复成功","space.php?do=friend");
 	}
 }	
+$count2 = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('space')." where recomendman='$_SGLOBAL[supe_uid]'"), 0);
 //·ÖÒ³
 $perpage = 24;
 $perpage = mob_perpage($perpage);
@@ -169,7 +170,42 @@ if($_GET['view'] == 'online') {
 	}
 	$multi = multi($count, $perpage, $page, $theurl);
 
-}elseif($_GET['view'] == 'hot') {
+}elseif($_GET['view'] == 'free'){
+	$query = $_SGLOBAL['db']->query("SELECT s.* FROM  ".tname('space')." s 
+				LEFT JOIN ".tname('spacefield')." f ON s.uid=f.uid
+				WHERE s.recomendman='$_SGLOBAL[supe_uid]' and s.buystatus='0'
+				ORDER BY s.lastlogin DESC
+				LIMIT $start,$perpage");
+	while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+				realname_set($value['uid'], $value['username'], $value['name'], $value['namestatus']);
+				$value['p'] = rawurlencode($value['resideprovince']);
+				$value['c'] = rawurlencode($value['residecity']);
+				$value['group'] = $groups[$value['gid']];
+				$value['isfriend'] = 1;
+				$fuids[] = $value['uid'];
+				$value['note'] = getstr($value['note'], 28, 0, 0, 0, 0, -1);
+				$list[$value['uid']] = $value;
+			}
+			$multi = multi($count, $perpage, $page, $theurl);
+	
+	}elseif($_GET['view'] == 'case'){
+	$query = $_SGLOBAL['db']->query("SELECT s.* FROM  ".tname('space')." s 
+				LEFT JOIN ".tname('spacefield')." f ON s.uid=f.uid
+				WHERE s.recomendman='$_SGLOBAL[supe_uid]' and s.buystatus='1'
+				ORDER BY s.lastlogin DESC
+				LIMIT $start,$perpage");
+	while ($value = $_SGLOBAL['db']->fetch_array($query)) {
+				realname_set($value['uid'], $value['username'], $value['name'], $value['namestatus']);
+				$value['p'] = rawurlencode($value['resideprovince']);
+				$value['c'] = rawurlencode($value['residecity']);
+				$value['group'] = $groups[$value['gid']];
+				$value['isfriend'] = 1;
+				$fuids[] = $value['uid'];
+				$value['note'] = getstr($value['note'], 28, 0, 0, 0, 0, -1);
+				$list[$value['uid']] = $value;
+			}
+			$multi = multi($count, $perpage, $page, $theurl);
+	}elseif($_GET['view'] == 'hot') {
 
 	$theurl = "space.php?uid=$space[uid]&do=friend&view=$_GET[view]";
 	$actives = array('me'=>' class="active"');

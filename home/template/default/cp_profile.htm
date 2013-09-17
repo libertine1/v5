@@ -164,6 +164,11 @@
                     <!--{if $zhong1||$_SN[$_SGLOBAL[supe_uid]]=="admin"}--> <a href="cp.php?ac=advance" class="link_back_bread grid_3">
                       高级管理
                      </a><!--{/if}-->
+                     <!--{if $zhong1}--> 
+                     <a href="space.php?do=menuset" class="link_back_bread grid_3">
+                      组件管理
+                     </a>
+                     <!--{/if}-->
                  <!--{if $_SCONFIG['namechange']}--><!--{if $zhong1}--><a class="btn grid_2" href="$theurl&namechange=1">修改</a><!--{/if}--><!--{/if}-->
                  </div><!-- end -->
                 
@@ -774,5 +779,61 @@ function add_tbody() {
           $('a[rel*=leanModal]').leanModal({ top : 200 });    
       });
     </script>
+    <!--{if empty($space[recomendman])&&empty($zhong)}-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        $('#weixin').modal();
+         })
+    </script>
+    <!--{/if}-->
+   <!-- <script type="text/javascript">
 
+$(document).ready(function() {
+ 
+ $('.list_box').hide();
+ $('#recomendman').keyup(function(){
+  var keywords = $('#recomendman').val();
+  
+  $.ajax({
+   type:"POST",
+   url:"space.php?do=ajax",
+   data:{keywords:keywords},
+   success:function(html) {
+    
+    $('.list_box').show();
+    $('.keywords_list').html(html);
+    }
+  })
+})
+})
+    </script>-->
+    <!--{if empty($space[recomendman])&&empty($zhong)}-->
+     <div id="weixin">
+     <form action = "cp.php?do=profile" method = "post" style="margin:0 auto;text-align:center;">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">是否有推荐人？</h3>
+    <h3 style="font-size:20px;color:#44B1BA;margin:0;line-height:40px;padding-left:10px;">你的推荐人是:&nbsp;<select name="recomendman" ><!--{loop $list $value}--><option value="$value[uid]">$value[name]</option><!--{/loop}--><!-- <div class="list_box" style=" border:1px solid red;">
+          <div class="keywords_list"></div>
+          </div> --></select></h3><br/>
+
+    <input type="submit" name="submit" style="margin-left:220px;margin-right:20px;" class="btn grid_2" value="提交">
+    <input type="submit" name="submit" style="
+display: inline-block;
+width: 94px;
+height: 32px;
+line-height: 32px;
+text-align: center;
+color: white;
+background: url('./template/default/image/btn_normal.png') no-repeat;margin: 0;
+padding: 0;
+border: 0;
+float: left;
+" class="modalCloseImg simplemodal-close"  value="取消">
+    <input type="hidden" name="recomendweixin" value="1">
+    </form>
+
+    </div>
+<!--{/if}-->
 <!--{template footer}-->

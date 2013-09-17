@@ -12,6 +12,7 @@ if(empty($m_auth)){
 	wxshowmessage('login_failure_please_re_login',  'wx.php?do=bind&wxkey='.$_GET['wxkey']);
 }
 */
+if($_GET['cheak']!='1'){
 include_once( 'weibo/config.php' );
 require_once '../common.php';
 require_once 'wx_common.php';
@@ -47,6 +48,7 @@ $rst = $_SGLOBAL['db']->query("SELECT * FROM ".tname('wxkey')." WHERE wxkey='$_G
 		$value = $_SGLOBAL['db']->fetch_array($query);
 		if($value){
 		loaducenter();
+
 		//include_once(S_ROOT.'./source/function_cp.php');
 		//updateuserstat('hot');	
 		$user = uc_get_user($value['uid'], 1); 
@@ -58,6 +60,7 @@ $rst = $_SGLOBAL['db']->query("SELECT * FROM ".tname('wxkey')." WHERE wxkey='$_G
         $friend = file_get_contents($friendurl,0,null,null);
         $friend_output = json_decode($friend);
         inserttable("wxkey",array('wxkey'=>$_GET['wxkey'],'fakeid'=>$fakeid,'uid'=>$value['uid']));
+        
 
 	}else{
 	$username = $_GET['wxkey'];
@@ -134,11 +137,12 @@ $rst = $_SGLOBAL['db']->query("SELECT * FROM ".tname('wxkey')." WHERE wxkey='$_G
 
 }	
 }
-
+}
 $type=$_GET['type'];
 $typeid=$type."id";
 $field=$type."field";
 $typepic=$type."pic";
+
 $uid=$_GET['uid'];
 $id=$_GET['id'];
 $viewuid=$_SGLOBAL['supe_uid'];
@@ -167,7 +171,11 @@ if($_GET['type']=="job"){
 }elseif($_GET['type']=="dialog"){
 		require_once '../source/function_common.php';
 		$uidwxkey=getspace($uid);
-		include_once template("./wx/template/dialogcontent");
+			if($uidwxkey['moblieclicknum']=="2"){
+		include_once template("./wx/template/$uidwxkey[moblieclicknum]/dialogcontent");
+	}else{
+	include_once template("./wx/template/dialogcontent");
+	}
 }elseif($_GET['type']=="goods"){
 	$query = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname($type)." b LEFT JOIN ".tname($field)." bf ON bf.$typeid=b.$typeid WHERE b.$typeid='$id' AND b.uid='$uid'");
 	$wei = $_SGLOBAL['db']->fetch_array($query);
@@ -178,6 +186,11 @@ if($_GET['type']=="job"){
 	$space = $_SGLOBAL['db']->fetch_array($query1);
 	require_once '../source/function_common.php';
 	$uidwxkey=getspace($uid);
+	$count2 = $_SGLOBAL['db']->result($_SGLOBAL['db']->query("SELECT COUNT(*) FROM ".tname('goodscod')."  WHERE viewuid='$uid'"),0);
+	$query2 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE viewuid='$uid'");
+	while($value2=$_SGLOBAL['db']->fetch_array($query2)){
+		$wei2[]=$value2;
+	}
 	$query1 = $_SGLOBAL['db']->query("SELECT * FROM ".tname('goodscod')." WHERE uid='$_SGLOBAL[supe_uid]'");
 	$wei1 = $_SGLOBAL['db']->fetch_array($query1);
 	if($_GET['moblieclicknum']=="2"){

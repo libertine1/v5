@@ -55,7 +55,7 @@
   						$row = mysql_fetch_array($result);
 					if($row){
 		
-  					updatetable($table, array('imageurl'=>$this->upload_target_path), array('uid'=>$id));
+  					updatetable($table, array('imageurl'=>$this->upload_target_path), array('uid'=>$id,'type'=>'image'));
   					}else{
 
   					inserttable($table,array('imageurl'=>$this->upload_target_path,'uid'=>$id,'type'=>'image'));	

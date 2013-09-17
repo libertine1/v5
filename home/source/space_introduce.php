@@ -22,7 +22,7 @@ if($newname['newname']){
 	$newname['subject']=$newname['newname'];
 }
 	
-
+if($_SGLOBAL['supe_uid']){
 //判断是否购买
 $query5 = $_SGLOBAL['db']->query("SELECT bf.*, b.* FROM ".tname('appset')." bf $f_index
 				LEFT JOIN ".tname('menuset')." b ON bf.num=b.menusetid
@@ -32,6 +32,7 @@ $value5 = $_SGLOBAL['db']->fetch_array($query5);
 $zhong2=$value5;
 if(empty($zhong2)){
 	showmessage("未购买应用，请购买后再使用！","space.php?do=menuset&view=all");
+}
 }
 
 $minhot = $_SCONFIG['feedhotmin']<1?3:$_SCONFIG['feedhotmin'];

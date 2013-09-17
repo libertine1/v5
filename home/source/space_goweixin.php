@@ -10,11 +10,12 @@ if($_POST["alreadyweixin"]=="1"){
 	$d = new Weixin("$username", "$password");
 	$info = $d->getUser();
 	$token = $d->GetId();
+	$usermore=$d->get_userinfo_by_fakeid($info);
 	if(empty($token[0])){
 		showmessage("未能正确获取到微信公众号信息，请确认帐号密码是否填写正确.","space.php?do=menuset");
 	}else{	
 	$token[0]=trim($token[0]);
-	updatetable("space", array('fakeid'=>$info,'wxkey'=>$token[0],'weixinusername'=>$username,'weixinpassword'=>$password),array('uid'=>$_SGLOBAL['supe_uid']));
+	updatetable("space", array('fakeid'=>$info,'weixinname'=>$usermore['NickName'],'weixinhao'=>$usermore['Username'],'wxkey'=>$token[0],'weixinusername'=>$username,'weixinpassword'=>$password),array('uid'=>$_SGLOBAL['supe_uid']));
 	showmessage("提交成功","space.php?do=menuset");
 	}
 }
